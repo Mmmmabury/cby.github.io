@@ -1,0 +1,764 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|monaco:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="数据库," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="cby的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="思维导图
+关系代数的概念关系代数是一种过程化查询语言。
+关系代数的基本运算有6种：选择$\sigma$、投影$\prod$、并$\bigcup$、集合差$-$、笛卡儿积$\times $和更名$\rho$  
+还有其他一些：集合交$\bigcap$、自然连接$\bowtie$和赋值$\leftarrow $  
+选择，投影与更名是一元运算（对一个关系进行运算）
+关系代数的具体运算综合大例子：123">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库关系代数">
+<meta property="og:url" content="http://yuntechs.me/2014/05/25/数据库关系代数/index.html">
+<meta property="og:site_name" content="cby的博客">
+<meta property="og:description" content="思维导图
+关系代数的概念关系代数是一种过程化查询语言。
+关系代数的基本运算有6种：选择$\sigma$、投影$\prod$、并$\bigcup$、集合差$-$、笛卡儿积$\times $和更名$\rho$  
+还有其他一些：集合交$\bigcap$、自然连接$\bowtie$和赋值$\leftarrow $  
+选择，投影与更名是一元运算（对一个关系进行运算）
+关系代数的具体运算综合大例子：123">
+<meta property="og:image" content="http://pic.yupoo.com/epapa_v/DMJcHubC/Lr3BZ.png">
+<meta property="og:updated_time" content="2016-06-12T02:13:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据库关系代数">
+<meta name="twitter:description" content="思维导图
+关系代数的概念关系代数是一种过程化查询语言。
+关系代数的基本运算有6种：选择$\sigma$、投影$\prod$、并$\bigcup$、集合差$-$、笛卡儿积$\times $和更名$\rho$  
+还有其他一些：集合交$\bigcap$、自然连接$\bowtie$和赋值$\leftarrow $  
+选择，投影与更名是一元运算（对一个关系进行运算）
+关系代数的具体运算综合大例子：123">
+<meta name="twitter:image" content="http://pic.yupoo.com/epapa_v/DMJcHubC/Lr3BZ.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 数据库关系代数 | cby的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-71859683-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">cby的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">勿在浮沙筑高台</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                数据库关系代数
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-05-25T09:36:34+08:00" content="2014-05-25">
+              2014-05-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/05/25/数据库关系代数/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/05/25/数据库关系代数/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h1><p><img src="http://pic.yupoo.com/epapa_v/DMJcHubC/Lr3BZ.png" alt="思维导图"></p>
+<h1 id="关系代数的概念"><a href="#关系代数的概念" class="headerlink" title="关系代数的概念"></a>关系代数的概念</h1><p>关系代数是一种过程化查询语言。</p>
+<h1 id="关系代数的基本运算"><a href="#关系代数的基本运算" class="headerlink" title="关系代数的基本运算"></a>关系代数的基本运算</h1><p>有6种：选择$\sigma$、投影$\prod$、并$\bigcup$、集合差$-$、笛卡儿积$\times $和更名$\rho$  </p>
+<p>还有其他一些：集合交$\bigcap$、自然连接$\bowtie$和赋值$\leftarrow $  </p>
+<p>选择，投影与更名是一元运算（对一个关系进行运算）</p>
+<h1 id="关系代数的具体运算"><a href="#关系代数的具体运算" class="headerlink" title="关系代数的具体运算"></a>关系代数的具体运算</h1><p>综合大例子：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> A1,A2,<span class="keyword">sum</span>(A3)</div><div class="line"><span class="keyword">from</span> r1,r2....rm</div><div class="line"><span class="keyword">where</span> P</div><div class="line"><span class="keyword">group</span> <span class="keyword">by</span> A1,A2</div></pre></td></tr></table></figure></p>
+<p>转成关系代数就是：<br>$$<em>{A1,A2}\mathcal{G}</em>{sum(A3)} (\prod A1,A2…An(\sigma_{p}(r1\times r2\times….\times rm))$$</p>
+<h2 id="基本的运算"><a href="#基本的运算" class="headerlink" title="基本的运算"></a>基本的运算</h2><ul>
+<li><strong>选择</strong> $\sigma$<br>$\sigma_{条件}（关系）$<br>对应SQL中的where<br>条件中可以进行比较和运算：=，$\neq$,$&gt;$,$\geq$,$&lt; $,$\leq$<br>也可以用连词：and（$\wedge$),or($\vee$),not($\neg $)</li>
+</ul>
+<ul>
+<li><strong>投影</strong>  $\prod$<br>$\prod_{属性}(关系)$<br>对属性的运算<br>对应select</li>
+</ul>
+<ul>
+<li><strong>并运算</strong>  $\bigcup$<br>对元祖的运算</li>
+</ul>
+<p>关系a$\bigcup$关系b<br>可以将两个集合的相同属性下的元祖合并起来<br><strong>要求：</strong></p>
+<ol>
+<li>a，b属性数要相同（同元）</li>
+<li>对任意i，a的第i个属性域（就是数据类型或者严格说是相同数据类型的值的集合）必须和b的第i个属性域相同<br><strong>人话就是：</strong><br>两个关系a，b中，他们属性数目要相同，类型也要相同，属性名也要相同，属性排序也要相同</li>
+</ol>
+<ul>
+<li><p><strong>集合差</strong> $-$<br>仅仅对元祖<br>r$-$s  即包含于r但不包含于s的</p>
+</li>
+<li><p><strong>笛卡儿积运算</strong>  $\times$</p>
+</li>
+</ul>
+<ul>
+<li><strong>更名运算</strong> $\rho$<br>$\rho<em>{x}(E)$  将关系E更名为$x$<br>$\rho</em>{x(A<em>{1},A</em>{2}….A<em>{n})}(E)$   将关系E更名为x，并将其中的n个属性更名为$A</em>{1},A<em>{2}….A</em>{n}$<br>例如：<br>$\prod<em>{A,B}(\sigma</em>{c}(a \times \rho_{d}(b)))$</li>
+</ul>
+<h3 id="增强的运算"><a href="#增强的运算" class="headerlink" title="增强的运算"></a>增强的运算</h3><ul>
+<li><p><strong>集合交运算</strong> $\bigcap$<br>r $\bigcap s$ = r - (r - s)</p>
+</li>
+<li><p><strong>自然连接运算</strong> $\bowtie$</p>
+</li>
+<li><p><strong>赋值运算</strong>  用 $\leftarrow$ 来表示<br>例如：<br>将temp1 $\leftarrow$ r $\bowtie$ s<br>r与s关系的自然连接结果赋给temp1</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>左外连接</strong>  </p>
+</li>
+<li><p><strong>右外连接</strong></p>
+</li>
+<li><p><strong>聚集</strong>  $ \mathcal{G} $<br>sum 加  $G_{sum(salary)}(instructor$<br>avg 平均<br>count 汇集元素个数<br>min<br>max<br>例子：<br>在关系instructor中，对dept_name进行分组，并计算其的平均工资<br>$_{deptname}\mathcal{G}_{average(salary)}(instructor)$</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> average（salary）</div><div class="line"><span class="keyword">from</span> instructor</div><div class="line"><span class="keyword">group</span> <span class="keyword">by</span> deptname</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>除运算</strong> $\div$</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据库/" rel="tag">#数据库</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/04/19/c-programming-language/" rel="next" title="C Programming Language 笔记">
+                <i class="fa fa-chevron-left"></i> C Programming Language 笔记
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/09/14/图解-TCP-IP/" rel="prev" title="图解 TCP/IP 笔记">
+                图解 TCP/IP 笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2014/05/25/数据库关系代数/"
+           data-title="数据库关系代数" data-url="http://yuntechs.me/2014/05/25/数据库关系代数/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/picture/avatar.jpeg"
+               alt="Baiyun Cai" />
+          <p class="site-author-name" itemprop="name">Baiyun Cai</p>
+          <p class="site-description motion-element" itemprop="description">白云的个人博客</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">53</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://wiki.yuntechs.me" target="_blank" title="个人维基">
+                  
+                    <i class="fa fa-fw fa-wikipedia-w"></i>
+                  
+                  个人维基
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Mmmmabury" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#思维导图"><span class="nav-number">1.</span> <span class="nav-text">思维导图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关系代数的概念"><span class="nav-number">2.</span> <span class="nav-text">关系代数的概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关系代数的基本运算"><span class="nav-number">3.</span> <span class="nav-text">关系代数的基本运算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关系代数的具体运算"><span class="nav-number">4.</span> <span class="nav-text">关系代数的具体运算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本的运算"><span class="nav-number">4.1.</span> <span class="nav-text">基本的运算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#增强的运算"><span class="nav-number">4.1.1.</span> <span class="nav-text">增强的运算</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Baiyun Cai</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yuntechs"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+
+</body>
+</html>

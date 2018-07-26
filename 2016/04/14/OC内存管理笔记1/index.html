@@ -1,0 +1,756 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|monaco:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS,Objective-C,OC内存管理,读书笔记," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="cby的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="今天阅读《Objective-C 高级编程》，做下笔记，内容都是书里面整理出来的，作为初学者暂时还无法有自己的拓展和思考。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="alloc/retain/release/dealloc 实现">
+<meta property="og:url" content="http://yuntechs.me/2016/04/14/OC内存管理笔记1/index.html">
+<meta property="og:site_name" content="cby的博客">
+<meta property="og:description" content="今天阅读《Objective-C 高级编程》，做下笔记，内容都是书里面整理出来的，作为初学者暂时还无法有自己的拓展和思考。">
+<meta property="og:updated_time" content="2016-04-21T11:32:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="alloc/retain/release/dealloc 实现">
+<meta name="twitter:description" content="今天阅读《Objective-C 高级编程》，做下笔记，内容都是书里面整理出来的，作为初学者暂时还无法有自己的拓展和思考。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> alloc/retain/release/dealloc 实现 | cby的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-71859683-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">cby的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">勿在浮沙筑高台</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                alloc/retain/release/dealloc 实现
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-14T16:14:44+08:00" content="2016-04-14">
+              2016-04-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Objective-C</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/14/OC内存管理笔记1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/14/OC内存管理笔记1/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>今天阅读《Objective-C 高级编程》，做下笔记，内容都是书里面整理出来的，作为初学者暂时还无法有自己的拓展和思考。</p>
+<a id="more"></a>
+<h1 id="NSZone"><a href="#NSZone" class="headerlink" title="NSZone"></a>NSZone</h1><p> NSZone（是一个结构体）使用 NSZone 结构是为了防止内存碎片化，但是后来被弃用了，因为系统对内存的管理已经非常高效，使用 NSZone 反而会降低效率。</p>
+<h1 id="GNUstep-中的实现"><a href="#GNUstep-中的实现" class="headerlink" title="GNUstep 中的实现"></a>GNUstep 中的实现</h1><h2 id="alloc-实现"><a href="#alloc-实现" class="headerlink" title="alloc 实现"></a>alloc 实现</h2><h3 id="用-NSZone-的实现"><a href="#用-NSZone-的实现" class="headerlink" title="用 NSZone 的实现"></a>用 NSZone 的实现</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">+ (<span class="keyword">id</span>) alloc&#123;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> [<span class="keyword">self</span> allocWithZone: <span class="built_in">NSDefaultMallocZone</span>()];<span class="comment">// NSDefaultMallocZone 返回默认的 zone</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">+ (<span class="keyword">id</span>) allocWithZone: (<span class="built_in">NSZone</span> *) z&#123;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="built_in">NSAllocateObject</span>(<span class="keyword">self</span>, <span class="number">0</span>, z);</div><div class="line">&#125;   </div><div class="line"></div><div class="line"><span class="keyword">struct</span> obj_layout&#123;</div><div class="line"></div><div class="line">    <span class="built_in">NSUInteger</span> retained;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">inline</span> <span class="keyword">id</span> <span class="built_in">NSAllocateObject</span>(Class aClass, <span class="built_in">NSUInteger</span> extraBytes, <span class="built_in">NSZone</span> *zone)&#123;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> size = 对象所需内存大小;</div><div class="line">    <span class="keyword">id</span> new = <span class="built_in">NSZoneMalloc</span>(zone, size);</div><div class="line">    memset(new, <span class="number">0</span>, size);</div><div class="line">    new = (<span class="keyword">id</span>) &amp; ((<span class="keyword">struct</span> obj_layout *)new)[<span class="number">1</span>];<span class="comment">// 将 new 强制转换为 obj_layout 指针，并用下标（我觉得不用下标好点）获得 retained 后面第一个地址中的值，然后用 &amp; 获得这个值的地址，将其强制转换为 id 类型指针，最后将这个地址赋给 new</span></div><div class="line">    <span class="keyword">return</span> new;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>alloc 调用了 allocWithZone:,在 allocWithZone:中又调用了 NSAllocateObject 来分配内存给对象。</p>
+<h3 id="不用-NSZone-实现"><a href="#不用-NSZone-实现" class="headerlink" title="不用 NSZone 实现"></a>不用 NSZone 实现</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> obj_layout&#123;</div><div class="line">    <span class="built_in">NSUInteger</span> retained;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">+ (<span class="keyword">id</span>) alloc&#123;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> size = <span class="keyword">sizeof</span>(<span class="keyword">struct</span> obj_layout) + 对象大小; <span class="comment">// 计算需要多少内存空间</span></div><div class="line">    <span class="keyword">struct</span> obj_layout *p = (<span class="keyword">struct</span> obj_layout *) calloc(<span class="number">1</span>, size); <span class="comment">// 使用 calloc 分配1个 size 大小的内存空间</span></div><div class="line">    <span class="keyword">return</span> (<span class="keyword">id</span>)(p+<span class="number">1</span>); <span class="comment">// 机智地+1s（误）使指针指向对象的首地址，并且强制类型转换为 id</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="retainCount"><a href="#retainCount" class="headerlink" title="retainCount"></a>retainCount</h2><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">NSUInteger</span>) retainCount&#123;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="built_in">NSExtraRefCount</span>(<span class="keyword">self</span>) + <span class="number">1</span>; <span class="comment">// 调用 NSExtraRefCount 加1后返回</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">inline</span> <span class="built_in">NSUInteger</span></div><div class="line"><span class="built_in">NSExtraRefCount</span>(<span class="keyword">id</span> anObject)&#123;</div><div class="line"></div><div class="line"><span class="keyword">return</span> ((<span class="keyword">struct</span> obj_layout *) anObject)[<span class="number">-1</span>].retained;<span class="comment">// 将接收到的指针指向 obj_layout 首地址，并从中取 retained 的值</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="retain"><a href="#retain" class="headerlink" title="retain"></a>retain</h2><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">id</span>) <span class="keyword">retain</span>&#123;</div><div class="line">    <span class="built_in">NSIncrementExtraRefCount</span>(<span class="keyword">self</span>);</div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">inline</span> <span class="keyword">void</span></div><div class="line"><span class="built_in">NSIncrementExtraRefCount</span>(<span class="keyword">id</span> anObject)&#123;</div><div class="line"></div><div class="line"><span class="comment">// 先进行边界检查,检查 retained 是否会溢出，如果溢出抛出错误</span></div><div class="line">    <span class="keyword">if</span>(((<span class="keyword">struct</span> obj_layout *)anObject)[<span class="number">-1</span>].retained == <span class="built_in">UINT_MAX</span> - <span class="number">1</span>))&#123;</div><div class="line">        [<span class="built_in">NSException</span> raise: <span class="built_in">NSInternalInconsistencyException</span> format: <span class="string">@"NSIncrementExtraRefCount() asked to increment too far"</span>);</div><div class="line"></div><div class="line"><span class="comment">// 使 retained 加1    </span></div><div class="line">        ((<span class="keyword">struct</span> obj_layout *) anObject)[<span class="number">-1</span>].retained++;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="release"><a href="#release" class="headerlink" title="release"></a>release</h2><p>很简单地可以推出 release 实现</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>) <span class="keyword">retain</span>&#123;</div><div class="line">    <span class="comment">// 调用 NSDecrementExtraRefCountWasZero 方法，如果返回 YES，则调用 dealloc 方法，销毁对象</span></div><div class="line">    <span class="keyword">if</span>(<span class="built_in">NSDecrementExtraRefCountWasZero</span>(<span class="keyword">self</span>))</div><div class="line">        [<span class="keyword">self</span> dealloc];</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">BOOL</span> <span class="built_in">NSDecrementExtraRefCountWasZero</span> (<span class="keyword">id</span> anObject)&#123;</div><div class="line"><span class="comment">// 如果 retained 是为0，则返回 YES</span></div><div class="line">    <span class="keyword">if</span>(((<span class="keyword">struct</span> obj_layout *) anObject[<span class="number">-1</span>].retained == <span class="number">0</span>)&#123;</div><div class="line">    </div><div class="line">            <span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">        &#125; <span class="keyword">else</span>&#123;</div><div class="line"><span class="comment">// 否则使 retained 减1，返回 NO        </span></div><div class="line">            ((<span class="keyword">struct</span> obj_layout *) anObject)[<span class="number">-1</span>].retained--;</div><div class="line">            <span class="keyword">return</span> <span class="literal">NO</span>;</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>之前有写过引用计数器的博客，里面对 retainCount 为什么不会为0做了个猜想，这里就有一个很好的解释了。之前的博客<a href="/2016/04/13/Objective-C中的引用计数器/#u731C_u60F3">地址</a></p>
+<h2 id="dealloc"><a href="#dealloc" class="headerlink" title="dealloc"></a>dealloc</h2><p>这个差不多就不注释了<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>) dealloc&#123;</div><div class="line">    <span class="built_in">NSDeallocateObject</span>(<span class="keyword">self</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">inline</span> <span class="keyword">void</span></div><div class="line"><span class="built_in">NSDeallocateObject</span>(<span class="keyword">id</span> anObject)&#123;</div><div class="line"></div><div class="line">    <span class="keyword">struct</span> obj_layout *o = &amp;((<span class="keyword">struct</span> obj_layout *) anObject)[<span class="number">-1</span>];</div><div class="line">    free(o)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="苹果的实现的猜测"><a href="#苹果的实现的猜测" class="headerlink" title="苹果的实现的猜测"></a>苹果的实现的猜测</h1><h2 id="alloc"><a href="#alloc" class="headerlink" title="alloc"></a>alloc</h2><p>苹果的 alloc 实现中调用了以下方法：</p>
+<ul>
+<li>+alloc</li>
+<li>+allocWithZone:</li>
+<li>class_createInstance</li>
+<li>calloc</li>
+</ul>
+<p>过程：首先 alloc 调用 allocWithZone: 方法，然后调用 class_createInstance 函数，最后通过 calloc 来分配内存块。这个顺序和 GNUstep 的实现相似.</p>
+<h2 id="retainCount、retain-和-release-的实现"><a href="#retainCount、retain-和-release-的实现" class="headerlink" title="retainCount、retain 和 release 的实现"></a>retainCount、retain 和 release 的实现</h2><h3 id="retainCount-1"><a href="#retainCount-1" class="headerlink" title="retainCount"></a>retainCount</h3><p>调用了：</p>
+<ul>
+<li>-retianCount</li>
+<li>__CFDoExternRefOperation</li>
+<li>CFBasicHashGetCountOfKey</li>
+</ul>
+<h3 id="retain-1"><a href="#retain-1" class="headerlink" title="retain"></a>retain</h3><p>调用了：</p>
+<ul>
+<li>-retain</li>
+<li>__CFDoExternRefOperation</li>
+<li>CFBasicHashAddValue</li>
+</ul>
+<h3 id="release-1"><a href="#release-1" class="headerlink" title="release"></a>release</h3><p>调用了：</p>
+<ul>
+<li>release</li>
+<li>__CFDoExternRefOperation</li>
+<li>CFBasicHashRemoveValue</li>
+</ul>
+<h3 id="CFDoExternRefOperation"><a href="#CFDoExternRefOperation" class="headerlink" title="__CFDoExternRefOperation"></a>__CFDoExternRefOperation</h3><p>上面每一个方法都调用了<strong>CFDoExternRefOperation方法，CF 开头是指 Core Foundation 框架，下面是</strong>CFDoExternRefOperation方法的简化后代码:<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> __CFDoExternRefOperation(uintptr_t op, <span class="keyword">id</span> obj)&#123;</div><div class="line">    <span class="built_in">CFBasicHashRef</span> table = 取得对象对应的散列表</div><div class="line">    <span class="keyword">int</span> count;</div><div class="line">    <span class="keyword">switch</span>(op)&#123;</div><div class="line">        <span class="keyword">case</span> OPERATION_retainCount: <span class="comment">// 如果是retainCount，则运行这个</span></div><div class="line">            count = <span class="built_in">CFBasicHashGetCountOfKey</span>(table, obj);  <span class="comment">// 从 hash 表中按照 key 获得值，这个值是 retainCount</span></div><div class="line">            <span class="keyword">return</span> count;</div><div class="line">        </div><div class="line">        <span class="keyword">case</span> OPERATION_retain:  <span class="comment">// 如果是retain，则运行这个</span></div><div class="line">            <span class="built_in">CFBasicHashAddValue</span>(table, obj);  <span class="comment">// 向 hash 表中添加 key，并设为0（也许吧）</span></div><div class="line">            <span class="keyword">return</span> obj;</div><div class="line">        </div><div class="line">        <span class="keyword">case</span> OPERATION_release: <span class="comment">// 如果是release，则运行这个</span></div><div class="line">            count = <span class="built_in">CFBasicHashRemoveValue</span>(table, obj);<span class="comment">// 从 hash 表中释放</span></div><div class="line">            <span class="keyword">return</span> <span class="number">0</span> == count;</div><div class="line">            &#125;</div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
+<h3 id="使用引用计数表和使用内存块头部管理引用计数的对比"><a href="#使用引用计数表和使用内存块头部管理引用计数的对比" class="headerlink" title="使用引用计数表和使用内存块头部管理引用计数的对比"></a>使用引用计数表和使用内存块头部管理引用计数的对比</h3><ul>
+<li>使用内存块头部</li>
+</ul>
+<ol>
+<li>代码少</li>
+<li>能够统一管理引用计数用内存块与对象用内存块</li>
+</ol>
+<ul>
+<li>使用引用计数表</li>
+</ul>
+<ol>
+<li>对象用内存块无需考虑内存块头部</li>
+<li>引用计数表各记录中存有内存块地址，可从各个记录中追溯到各对象的内存块（这一条对 debug 的时候非常重要）</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag">#iOS</a>
+          
+            <a href="/tags/Objective-C/" rel="tag">#Objective-C</a>
+          
+            <a href="/tags/OC内存管理/" rel="tag">#OC内存管理</a>
+          
+            <a href="/tags/读书笔记/" rel="tag">#读书笔记</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/13/Objective-C中的引用计数器/" rel="next" title="Objective-C 中的引用计数器">
+                <i class="fa fa-chevron-left"></i> Objective-C 中的引用计数器
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/15/autorelease的实现/" rel="prev" title="autorelease 的实现">
+                autorelease 的实现 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/14/OC内存管理笔记1/"
+           data-title="alloc/retain/release/dealloc 实现" data-url="http://yuntechs.me/2016/04/14/OC内存管理笔记1/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/picture/avatar.jpeg"
+               alt="Baiyun Cai" />
+          <p class="site-author-name" itemprop="name">Baiyun Cai</p>
+          <p class="site-description motion-element" itemprop="description">白云的个人博客</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">53</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://wiki.yuntechs.me" target="_blank" title="个人维基">
+                  
+                    <i class="fa fa-fw fa-wikipedia-w"></i>
+                  
+                  个人维基
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Mmmmabury" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#NSZone"><span class="nav-number">1.</span> <span class="nav-text">NSZone</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GNUstep-中的实现"><span class="nav-number">2.</span> <span class="nav-text">GNUstep 中的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#alloc-实现"><span class="nav-number">2.1.</span> <span class="nav-text">alloc 实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用-NSZone-的实现"><span class="nav-number">2.1.1.</span> <span class="nav-text">用 NSZone 的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不用-NSZone-实现"><span class="nav-number">2.1.2.</span> <span class="nav-text">不用 NSZone 实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#retainCount"><span class="nav-number">2.2.</span> <span class="nav-text">retainCount</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#retain"><span class="nav-number">2.3.</span> <span class="nav-text">retain</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#release"><span class="nav-number">2.4.</span> <span class="nav-text">release</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dealloc"><span class="nav-number">2.5.</span> <span class="nav-text">dealloc</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#苹果的实现的猜测"><span class="nav-number">3.</span> <span class="nav-text">苹果的实现的猜测</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#alloc"><span class="nav-number">3.1.</span> <span class="nav-text">alloc</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#retainCount、retain-和-release-的实现"><span class="nav-number">3.2.</span> <span class="nav-text">retainCount、retain 和 release 的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#retainCount-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">retainCount</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#retain-1"><span class="nav-number">3.2.2.</span> <span class="nav-text">retain</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#release-1"><span class="nav-number">3.2.3.</span> <span class="nav-text">release</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CFDoExternRefOperation"><span class="nav-number">3.2.4.</span> <span class="nav-text">__CFDoExternRefOperation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用引用计数表和使用内存块头部管理引用计数的对比"><span class="nav-number">3.2.5.</span> <span class="nav-text">使用引用计数表和使用内存块头部管理引用计数的对比</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Baiyun Cai</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yuntechs"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+
+</body>
+</html>

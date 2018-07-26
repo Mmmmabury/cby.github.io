@@ -1,0 +1,738 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|monaco:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="shadowsocks,VPN," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="cby的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="前几天去年买的 Shadowsocks 服务到期了，这家服务提供商还是挺稳定的，虽然一年换了两次ip，听说是因为原 ip 被墙了，在国内这网络环境下也是可以理解的。买他人提供的服务是挺省力的，但是总觉得不安全，毕竟所有过服务器的流量都是可以记录下来。而且哪个时候因为某些不好说的原因停止服务了，也很难追究责任，所以就琢磨这自己搭个梯子。正好最近开题报告答辩结束，时间充足，打算就边做边记录过程。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在 VPS 上搭建 shadowsocks 和 VPN">
+<meta property="og:url" content="http://yuntechs.me/2015/12/30/在VPS上搭建shadowsocks和VPN/index.html">
+<meta property="og:site_name" content="cby的博客">
+<meta property="og:description" content="前几天去年买的 Shadowsocks 服务到期了，这家服务提供商还是挺稳定的，虽然一年换了两次ip，听说是因为原 ip 被墙了，在国内这网络环境下也是可以理解的。买他人提供的服务是挺省力的，但是总觉得不安全，毕竟所有过服务器的流量都是可以记录下来。而且哪个时候因为某些不好说的原因停止服务了，也很难追究责任，所以就琢磨这自己搭个梯子。正好最近开题报告答辩结束，时间充足，打算就边做边记录过程。">
+<meta property="og:updated_time" content="2016-03-11T02:09:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在 VPS 上搭建 shadowsocks 和 VPN">
+<meta name="twitter:description" content="前几天去年买的 Shadowsocks 服务到期了，这家服务提供商还是挺稳定的，虽然一年换了两次ip，听说是因为原 ip 被墙了，在国内这网络环境下也是可以理解的。买他人提供的服务是挺省力的，但是总觉得不安全，毕竟所有过服务器的流量都是可以记录下来。而且哪个时候因为某些不好说的原因停止服务了，也很难追究责任，所以就琢磨这自己搭个梯子。正好最近开题报告答辩结束，时间充足，打算就边做边记录过程。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 在 VPS 上搭建 shadowsocks 和 VPN | cby的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-71859683-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">cby的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">勿在浮沙筑高台</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                在 VPS 上搭建 shadowsocks 和 VPN
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-30T16:27:11+08:00" content="2015-12-30">
+              2015-12-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/实践记录/" itemprop="url" rel="index">
+                    <span itemprop="name">实践记录</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/12/30/在VPS上搭建shadowsocks和VPN/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/30/在VPS上搭建shadowsocks和VPN/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>前几天去年买的 Shadowsocks 服务到期了，这家服务提供商还是挺稳定的，虽然一年换了两次ip，听说是因为原 ip 被墙了，在国内这网络环境下也是可以理解的。买他人提供的服务是挺省力的，但是总觉得不安全，毕竟所有过服务器的流量都是可以记录下来。而且哪个时候因为某些不好说的原因停止服务了，也很难追究责任，所以就琢磨这自己搭个梯子。正好最近开题报告答辩结束，时间充足，打算就边做边记录过程。</p>
+<a id="more"></a>
+<h1 id="digitalocean-改-kernel-后添加-module"><a href="#digitalocean-改-kernel-后添加-module" class="headerlink" title="digitalocean 改 kernel 后添加 module"></a>digitalocean 改 kernel 后添加 module</h1><p>我的 VPS 是 digitalocean，在 digitalocean 上需要改变 kernel 来支持锐速，但是内核改变后很多 module 无法载入，需要经过以下操作：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">uname -r</div><div class="line">apt-get install --reinstall linux-image-`uname -r`</div></pre></td></tr></table></figure>
+<p> 来重安装现在的内核。<br> <a href="http://www.victordodon.com/fix-problem-running-iptables-on-a-digitalocean-droplet/" target="_blank" rel="external">Digitalocean kernel</a></p>
+<h1 id="Shadowsocks-的搭建"><a href="#Shadowsocks-的搭建" class="headerlink" title="Shadowsocks 的搭建"></a>Shadowsocks 的搭建</h1><p>系统Ubuntu 14.04.3 LTS (GNU/Linux 3.13.0-48-generic x86_64)<br>运行 <code>apt-get update</code><br>运行</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">apt-get install python-pip</div><div class="line">pip install shadowsocks</div></pre></td></tr></table></figure>
+<p>创建一个配置文件，例如在 /root 下创建shadowsocks.json<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="string">"server"</span>:<span class="string">"服务器 IP"</span>,</div><div class="line">    <span class="string">"server_port"</span>:<span class="number">8000</span>,<span class="comment">//端口</span></div><div class="line">    <span class="string">"local_address"</span>: <span class="string">"127.0.0.1"</span>,</div><div class="line">    <span class="string">"local_port"</span>:<span class="number">1080</span>,</div><div class="line">    <span class="string">"password"</span>:<span class="string">"mypassword"</span>,<span class="comment">//密码</span></div><div class="line">    <span class="string">"timeout"</span>:<span class="number">300</span>,</div><div class="line">    <span class="string">"method"</span>:<span class="string">"aes-256-cfb"</span>,</div><div class="line">    <span class="string">"fast_open"</span>:<span class="literal">false</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>多用户的配置如下：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="string">"server"</span>:<span class="string">"服务器 IP"</span>,</div><div class="line">    <span class="string">"local_port"</span>:<span class="number">1080</span>,</div><div class="line">    <span class="string">"port_password"</span>:&#123;</div><div class="line">         <span class="string">"18140"</span>:<span class="string">"******"</span>,<span class="comment">//端口和密码</span></div><div class="line">         <span class="string">"18141"</span>:<span class="string">"******"</span>,</div><div class="line">         <span class="string">"18142"</span>:<span class="string">"******"</span>,</div><div class="line">         <span class="string">"18143"</span>:<span class="string">"******"</span>,</div><div class="line">         <span class="string">"18144"</span>:<span class="string">"******"</span>,</div><div class="line">         <span class="string">"18145"</span>:<span class="string">"******"</span></div><div class="line">    &#125;,</div><div class="line">    <span class="string">"timeout"</span>:<span class="number">400</span>,</div><div class="line">    <span class="string">"method"</span>:<span class="string">"aes-256-cfb"</span>,</div><div class="line">    <span class="string">"fast_open"</span>: <span class="literal">false</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p> 然后 在后头运行 shadowsocks：<br> <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssserver -c /root/shadowsocks.json -d start</div></pre></td></tr></table></figure></p>
+<p> 如果要停止，则将 <code>start</code> 改为 <code>stop</code>。<br> <code>ssserver -d stop</code></p>
+<p>后台运行如下：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nohup ssserver -c mutliUser.json -d start &gt; <span class="built_in">log</span> &amp;</div></pre></td></tr></table></figure></p>
+<p>查看日志：<br><code>less /var/log/shadowsocks.log</code><br><a href="http://notes.xiamo.tk/2015-06-17-Digitalocean配置shadowsocks服务器-优化笔记.html" target="_blank" rel="external">配置 shadowsocks 服务器</a></p>
+<h2 id="安装锐速"><a href="#安装锐速" class="headerlink" title="安装锐速"></a>安装锐速</h2><p><a href="http://www.serverspeeder.com" target="_blank" rel="external">官网</a><br>锐速只支持特定的内核，需要在安装页面查看锐速是否支持自己系统的内核。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget http:<span class="comment">//my.serverspeeder.com/d/ls/serverSpeederInstaller.tar.gz</span></div><div class="line">tar xzvf serverSpeederInstaller.tar.gz</div><div class="line">bash serverSpeederInstaller.sh</div></pre></td></tr></table></figure></p>
+<p>按照提示一路安装，安装好后可以改一下几个参数：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim  /serverspeeder/etc/config</div></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">rsc=<span class="string">"1"</span> #RSC网卡驱动模式  </div><div class="line">advinacc=<span class="string">"1"</span> #流量方向加速  </div><div class="line">maxmode=<span class="string">"1"</span> #最大传输模式</div></pre></td></tr></table></figure>
+<p>重启锐速<br><code>service serverSpeeder restart</code></p>
+<h1 id="VPN-的搭建"><a href="#VPN-的搭建" class="headerlink" title="VPN 的搭建"></a>VPN 的搭建</h1><ol>
+<li><p>从github上下载shell脚本<br>运行<code>wget https://raw.github.com/viljoviitanen/setup-simple-pptp-vpn/master/setup.sh</code></p>
+</li>
+<li><p>执行<br>运行<code>sh setup.sh</code></p>
+</li>
+<li><p>设置密码<br>运行<code>vim /etc/ppp/chap-secrets</code><br>终端中出现</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#Secrets for authentication using CHAP</span></div><div class="line"><span class="comment">#client server secret IP addresses</span></div><div class="line">用户名 pptpd 用户密码 *</div></pre></td></tr></table></figure>
+</li>
+<li><p>重启vpn服务<br>运行<code>service pptpd restart</code><br>会出现</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">*Restarting PoPToP Point to Point Tunneling Server pptpd</div></pre></td></tr></table></figure>
+</li>
+<li><p>NAT 转发<br>运行<code>iptables -t nat -A POSTROUTING -s 192.168.2.0/24 -j SNAT --to-source 服务器IP地址</code></p>
+</li>
+<li><p>重启服务<br>运行<code>service pptpd restart</code><br>终端出现</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* Restarting PoPToP Point to Point Tunneling Server pptpd       [ OK ]</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这样子应该可以了</p>
+<h1 id="apache2-安装"><a href="#apache2-安装" class="headerlink" title="apache2 安装"></a>apache2 安装</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">apt-get install apache2</div><div class="line">/etc/init.d/apache2 start</div></pre></td></tr></table></figure>
+<p>配置目录在<code>/etc/apache2</code><br>配置 <code>sites-available</code> 目录下的文件。<br>例如：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;VirtualHost *:80&gt;</div><div class="line">ServerAdmin webmaster@qubaoquan.test.com</div><div class="line">DocumentRoot /qubaoquan/</div><div class="line">ServerName qubaoquan.test.com</div><div class="line">ErrorLog logs/error_log</div><div class="line">CustomLog logs/access_log common</div><div class="line">&lt;/VirtualHost&gt;</div></pre></td></tr></table></figure></p>
+<p>service apache2 reload<br>a2dissite 停用站点<br>a2ensite 启用站点</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/shadowsocks/" rel="tag">#shadowsocks</a>
+          
+            <a href="/tags/VPN/" rel="tag">#VPN</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/12/30/HTTP-协议/" rel="next" title="HTTP 协议基础介绍">
+                <i class="fa fa-chevron-left"></i> HTTP 协议基础介绍
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/12/30/SSH公钥免密码登陆/" rel="prev" title="SSH 公钥免密码登陆">
+                SSH 公钥免密码登陆 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/12/30/在VPS上搭建shadowsocks和VPN/"
+           data-title="在 VPS 上搭建 shadowsocks 和 VPN" data-url="http://yuntechs.me/2015/12/30/在VPS上搭建shadowsocks和VPN/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/picture/avatar.jpeg"
+               alt="Baiyun Cai" />
+          <p class="site-author-name" itemprop="name">Baiyun Cai</p>
+          <p class="site-description motion-element" itemprop="description">白云的个人博客</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">53</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://wiki.yuntechs.me" target="_blank" title="个人维基">
+                  
+                    <i class="fa fa-fw fa-wikipedia-w"></i>
+                  
+                  个人维基
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Mmmmabury" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#digitalocean-改-kernel-后添加-module"><span class="nav-number">1.</span> <span class="nav-text">digitalocean 改 kernel 后添加 module</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Shadowsocks-的搭建"><span class="nav-number">2.</span> <span class="nav-text">Shadowsocks 的搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装锐速"><span class="nav-number">2.1.</span> <span class="nav-text">安装锐速</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#VPN-的搭建"><span class="nav-number">3.</span> <span class="nav-text">VPN 的搭建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#apache2-安装"><span class="nav-number">4.</span> <span class="nav-text">apache2 安装</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Baiyun Cai</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yuntechs"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+
+</body>
+</html>

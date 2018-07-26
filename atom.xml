@@ -1,0 +1,657 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>cby的博客</title>
+  <subtitle>勿在浮沙筑高台</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yuntechs.me/"/>
+  <updated>2017-11-14T02:37:02.916Z</updated>
+  <id>http://yuntechs.me/</id>
+  
+  <author>
+    <name>Baiyun Cai</name>
+    <email>cbylalala@gmail.com</email>
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iOS 音频处理</title>
+    <link href="http://yuntechs.me/2017/11/14/iOS-%E9%9F%B3%E9%A2%91%E5%A4%84%E7%90%86/"/>
+    <id>http://yuntechs.me/2017/11/14/iOS-音频处理/</id>
+    <published>2017-11-14T02:37:02.000Z</published>
+    <updated>2017-11-14T02:37:02.916Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>iOS 核心动画之 CAReplicatorLayer</title>
+    <link href="http://yuntechs.me/2017/11/14/iOS-%E6%A0%B8%E5%BF%83%E5%8A%A8%E7%94%BB%E4%B9%8B-CAReplicatorLayer/"/>
+    <id>http://yuntechs.me/2017/11/14/iOS-核心动画之-CAReplicatorLayer/</id>
+    <published>2017-11-14T02:31:39.000Z</published>
+    <updated>2017-11-14T02:31:39.803Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>iOS 中遇到的一些问题</title>
+    <link href="http://yuntechs.me/2017/11/14/iOS-%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/"/>
+    <id>http://yuntechs.me/2017/11/14/iOS-中遇到的一些问题/</id>
+    <published>2017-11-14T02:24:20.000Z</published>
+    <updated>2017-11-22T02:50:06.089Z</updated>
+    
+    <content type="html"><![CDATA[<ul>
+<li>原来没有约束是有圆角的，加了约束有圆角失效<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)init&#123;</div><div class="line">    ...</div><div class="line">    <span class="keyword">self</span>.clipsToBounds      = <span class="literal">YES</span>;</div><div class="line">    <span class="keyword">self</span>.layer.cornerRadius = <span class="number">10</span>;</div><div class="line">    <span class="keyword">self</span>.layer.masksToBounds= <span class="literal">YES</span>;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>后来把他放在 drawRect 中就有效果了，具体为什么不清楚</p>
+<ul>
+<li>resignFirstResponder 并显示一个页面时，键盘会消失后显示，延迟0.5秒显示页面</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;原来没有约束是有圆角的，加了约束有圆角失效&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://yuntechs.me/categories/iOS/"/>
+    
+    
+      <category term="iOS" scheme="http://yuntechs.me/tags/iOS/"/>
+    
+      <category term="Objective-C" scheme="http://yuntechs.me/tags/Objective-C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>runtime 机制了解</title>
+    <link href="http://yuntechs.me/2017/11/03/runtime-%E6%9C%BA%E5%88%B6%E4%BA%86%E8%A7%A3/"/>
+    <id>http://yuntechs.me/2017/11/03/runtime-机制了解/</id>
+    <published>2017-11-03T05:20:16.000Z</published>
+    <updated>2017-11-03T05:20:35.645Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://yuntechs.me/categories/iOS/"/>
+    
+    
+      <category term="iOS" scheme="http://yuntechs.me/tags/iOS/"/>
+    
+      <category term="Objective-C" scheme="http://yuntechs.me/tags/Objective-C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SDWebImage 源码阅读</title>
+    <link href="http://yuntechs.me/2017/11/03/SDWebImage%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/"/>
+    <id>http://yuntechs.me/2017/11/03/SDWebImage源码阅读/</id>
+    <published>2017-11-03T05:19:11.000Z</published>
+    <updated>2017-11-03T06:01:22.291Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://yuntechs.me/categories/iOS/"/>
+    
+    
+      <category term="iOS" scheme="http://yuntechs.me/tags/iOS/"/>
+    
+      <category term="Objective-C" scheme="http://yuntechs.me/tags/Objective-C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS创建工程有黑边</title>
+    <link href="http://yuntechs.me/2016/07/05/iOS%E5%88%9B%E5%BB%BA%E5%B7%A5%E7%A8%8B%E6%9C%89%E9%BB%91%E8%BE%B9/"/>
+    <id>http://yuntechs.me/2016/07/05/iOS创建工程有黑边/</id>
+    <published>2016-07-05T04:01:00.000Z</published>
+    <updated>2017-03-02T06:23:05.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天新创建了一个项目，把 Xcode 自动生成的一些文件删除了，运行一看出现了恶心的黑边，设置了不同的模拟器发现视图默认是 iPhone4 的大小，而且无法自动适配大小。谷歌了一下发现是因为删除了 Launch 视图，所以 Xcode 默认视项目不支持 iOS6 以上的系统，因此只适配了 iPhone4 ，解决方法只要加上了启动视图或者启动图片就行。</p>
+<p>解决方法：</p>
+<p>Target -&gt; General Tab -&gt; App Icons and Launch Images -&gt; add launch image<br>或者<br>重新添加 LaunchScreen.storyboard</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天新创建了一个项目，把 Xcode 自动生成的一些文件删除了，运行一看出现了恶心的黑边，设置了不同的模拟器发现视图默认是 iPhone4 的大小，而且无法自动适配大小。谷歌了一下发现是因为删除了 Launch 视图，所以 Xcode 默认视项目不支持 iOS6 以上的系统
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://yuntechs.me/categories/iOS/"/>
+    
+    
+      <category term="iOS" scheme="http://yuntechs.me/tags/iOS/"/>
+    
+      <category term="Objective-C，bug解决" scheme="http://yuntechs.me/tags/Objective-C%EF%BC%8Cbug%E8%A7%A3%E5%86%B3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于印象笔记 SDK 的一个小小记录</title>
+    <link href="http://yuntechs.me/2016/06/28/%E5%8D%B0%E8%B1%A1%E7%AC%94%E8%AE%B0-API-%E7%9A%84%E4%B8%80%E4%B8%AA%E5%B0%8F%E5%B0%8F%E8%AE%B0%E5%BD%95/"/>
+    <id>http://yuntechs.me/2016/06/28/印象笔记-API-的一个小小记录/</id>
+    <published>2016-06-28T06:16:14.000Z</published>
+    <updated>2016-06-28T06:32:47.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近在做的 APP 需要用到印象笔记的 SDK，实现在确定的笔记本中创建笔记的功能。看了印象笔记官方给的<a href="https://github.com/evernote/evernote-cloud-sdk-ios/blob/master/Getting_Started.md" target="_blank" rel="external">文档</a>，找到了创建新笔记的方法，但是却没有找到如何更改笔记所属的笔记本。又下载了提供实例代码，其中也没有对应的演示。无奈只能寻求 google 的帮助，但查询的结果都是老版本 SDK 实现，而且还是 Java 版的，想依照这些老的实现去找对应的方法，根本找不到。之后在印象笔记的开发者首页找到了<a href="https://dev.yinxiang.com/doc/articles/app_notebook.php" target="_blank" rel="external">应用笔记本</a>这个概念，看了之后根本没用。最后还是自己在源码中找到了。<br>其实实现这个功能是非常简单的，只要在创建笔记的时候对笔记设置对应的 notebookGuid 就行了，但是当时在寻找的过程中先去找了对应的方法，在关键的 ENoteSession 和 ENNoteStoreClient 类中都没有发现对应的方法，最后在吃饭的时候突然想到是否在 note 类中会有设置对应的笔记本呢，最后果然在 EDAMNote 中找到了一个属性 notebookGuid，实验了一下确实可以。不过到从开始到找到这个属性花了很多时间，以前觉得文档什么的没什么用，现在觉得一个好文档确实能节省非常多的时间。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近在做的 APP 需要用到印象笔记的 SDK，实现在确定的笔记本中创建笔记的功能。看了印象笔记官方给的&lt;a href=&quot;https://github.com/evernote/evernote-cloud-sdk-ios/blob/master/Getting_Start
+    
+    </summary>
+    
+      <category term="随记" scheme="http://yuntechs.me/categories/%E9%9A%8F%E8%AE%B0/"/>
+    
+    
+      <category term="随记" scheme="http://yuntechs.me/tags/%E9%9A%8F%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>pod 更新后的问题</title>
+    <link href="http://yuntechs.me/2016/06/12/pod-%E6%9B%B4%E6%96%B0%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>http://yuntechs.me/2016/06/12/pod-更新后的问题/</id>
+    <published>2016-06-12T03:48:33.000Z</published>
+    <updated>2016-06-12T04:01:45.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天把 pod 更新到了1.0.1，发现用 <code>pod install</code> 会出现 <code>[!] The dependency</code>evernote-cloud-sdk-ios<code>is not used in any concrete target.</code> 的错误，查了一些资料，发现需要在 Podfile 中修改如下内容：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">//原内容：</div><div class="line">pod 'evernote-cloud-sdk-ios'</div><div class="line"></div><div class="line">// 修改后</div><div class="line">target 'evernoteTest' do</div><div class="line">    pod 'evernote-cloud-sdk-ios'</div><div class="line">end</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天把 pod 更新到了1.0.1，发现用 &lt;code&gt;pod install&lt;/code&gt; 会出现 &lt;code&gt;[!] The dependency&lt;/code&gt;evernote-cloud-sdk-ios&lt;code&gt;is not used in any concrete
+    
+    </summary>
+    
+      <category term="实践记录" scheme="http://yuntechs.me/categories/%E5%AE%9E%E8%B7%B5%E8%AE%B0%E5%BD%95/"/>
+    
+    
+      <category term="工具" scheme="http://yuntechs.me/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>全站 HTTPS 支持</title>
+    <link href="http://yuntechs.me/2016/05/15/%E5%85%A8%E7%AB%99https%E6%94%AF%E6%8C%81/"/>
+    <id>http://yuntechs.me/2016/05/15/全站https支持/</id>
+    <published>2016-05-15T06:56:00.000Z</published>
+    <updated>2016-05-26T10:50:11.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>刚建站的时候就想支持 HTTPS，但是一直在完善网站和搭建梯子就没去支持 HTTPS，今天有空研究了了下 HTTPS 的支持，发现并没有想象中那么复杂。</p>
+<h1 id="申请第三方可信任证书"><a href="#申请第三方可信任证书" class="headerlink" title="申请第三方可信任证书"></a>申请第三方可信任证书</h1><p>我们可以使用自签证书，但是因为没有经过第三方机构认证，在访问时浏览器会发出警告。为了更好的访问体验，直接去第三方机构申请证书，我申请的机构是 <a href="https://www.startssl.com" target="_blank" rel="external">StartSSL</a>。<br>登录 StartSSL 网站，点击 Start Now For Free SSL Certificate 然后按照提示注册登录完毕，进入管理页面，选择 Certificate Wizard 中的 Web Server SSL/TLS Certificate，点击 continue，然后按照下图操作：</p>
+<p><img src="/picture/申请证书.png" alt=""></p>
+<a id="more"></a>
+<p>完毕后能在 ToolBox 中的 Certificate List 找到之前申请的证书，下载证书，获得一个压缩包，解压能获得4个压缩包，分别用于 ISS、Apache、Nginx以及其他服务器，我用的是 Nginx 服务器，所以我就解压 NginxServer，获得crt 文件。</p>
+<p><img src="/picture/HTTPS解压.png" alt=""></p>
+<h1 id="VPS-配置"><a href="#VPS-配置" class="headerlink" title="VPS 配置"></a>VPS 配置</h1><p>将之前获得的 crt 证书上传到 VPS，移动到<code>/etc/ssl/private/</code>目录，然后在 nginx 中配置如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">        # 监听 <span class="number">443</span> 端口</div><div class="line">        listen <span class="number">443</span>;</div><div class="line">        listen [::]:<span class="number">443</span> ssl ipv6only=on;</div><div class="line"></div><div class="line">        root /example;</div><div class="line">        index index.html index.htm;</div><div class="line"></div><div class="line">        server_name example.com;</div><div class="line"></div><div class="line">        location / &#123;</div><div class="line">            ……</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        # 重要是下面</div><div class="line">        ssl on;</div><div class="line">        ssl_certificate /etc/ssl/<span class="keyword">private</span>/example.crt;</div><div class="line">        ssl_certificate_key /etc/ssl/<span class="keyword">private</span>/example.key;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>重启 nginx ，在浏览器中输入 HTTPS://exmaple.com 就能通过 HTTPS 访问。但是因为只监听了433端口，如果通过 HTTP 是无法访问到网页，所以应该对 HTTP 链接重定向到 HTTPS 链接。设置如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">        listen <span class="number">80</span>;</div><div class="line">        listen [::]:<span class="number">80</span> ipv6only=on;</div><div class="line">        server_name example.com;</div><div class="line">        <span class="keyword">return</span> <span class="number">301</span> https:<span class="comment">//www.example.me$request_uri;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>经过上面的配置，已经完成了全站对 HTTPS 的支持。</p>
+<h1 id="一些免费的第三方证书签署网站"><a href="#一些免费的第三方证书签署网站" class="headerlink" title="一些免费的第三方证书签署网站"></a>一些免费的第三方证书签署网站</h1><ul>
+<li><a href="https://www.startssl.com" target="_blank" rel="external">StartSSL</a></li>
+<li><a href="https://letsencrypt.org" target="_blank" rel="external">Let’s Encrypt</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;刚建站的时候就想支持 HTTPS，但是一直在完善网站和搭建梯子就没去支持 HTTPS，今天有空研究了了下 HTTPS 的支持，发现并没有想象中那么复杂。&lt;/p&gt;
+&lt;h1 id=&quot;申请第三方可信任证书&quot;&gt;&lt;a href=&quot;#申请第三方可信任证书&quot; class=&quot;headerlink&quot; title=&quot;申请第三方可信任证书&quot;&gt;&lt;/a&gt;申请第三方可信任证书&lt;/h1&gt;&lt;p&gt;我们可以使用自签证书，但是因为没有经过第三方机构认证，在访问时浏览器会发出警告。为了更好的访问体验，直接去第三方机构申请证书，我申请的机构是 &lt;a href=&quot;https://www.startssl.com&quot;&gt;StartSSL&lt;/a&gt;。&lt;br&gt;登录 StartSSL 网站，点击 Start Now For Free SSL Certificate 然后按照提示注册登录完毕，进入管理页面，选择 Certificate Wizard 中的 Web Server SSL/TLS Certificate，点击 continue，然后按照下图操作：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/picture/申请证书.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Web" scheme="http://yuntechs.me/categories/Web/"/>
+    
+    
+      <category term="Web" scheme="http://yuntechs.me/tags/Web/"/>
+    
+      <category term="HTTPS" scheme="http://yuntechs.me/tags/HTTPS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>keyWindow 值为 nil 的问题</title>
+    <link href="http://yuntechs.me/2016/05/09/keyWindow-%E5%80%BC%E4%B8%BA-nil-%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>http://yuntechs.me/2016/05/09/keyWindow-值为-nil-的问题/</id>
+    <published>2016-05-09T04:56:02.000Z</published>
+    <updated>2016-05-24T12:47:14.000Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</div><div class="line"></div><div class="line">    [<span class="keyword">super</span> viewDidLoad];</div><div class="line">    <span class="built_in">UIWindow</span> *keyWindow = [[[<span class="built_in">UIApplication</span> sharedApplication] keyWindow];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最先用这个来获取 keywindow，结果获取到的是 nil，百思不得其解，最后在 <a href="http://stackoverflow.com/questions/3359501/uiapplication-sharedapplication-keywindow-is-nil" target="_blank" rel="external">stackoverflow</a>上找到了解决方式。</p>
+<a id="more"></a>
+<p>解决方法就是改为：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</div><div class="line"></div><div class="line">    [<span class="keyword">super</span> viewDidLoad];</div><div class="line">    <span class="built_in">UIWindow</span> *keyWindow = [[[<span class="built_in">UIApplication</span> sharedApplication] delegate] window];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h1><p>我还找到了这个，更加详细的解释<a href="http://stackoverflow.com/questions/31324660/how-to-properly-handle-a-nil-uiapplication-sharedapplication-keywindow" target="_blank" rel="external">stackoverflow</a></p>
+<!--more-->
+<blockquote>
+<p>The system reads your storyboard, initializes the root view controller, prepares it by calling viewDidLoad and viewWillAppear, adds it to the window and shows the window.<br>What happens is the system cannot just set the window to the front and animate the view controller onto it, because it’s the first view controller and you are not push/popping of a nav controller. And viewDidLoad can take some time… So the Default.png is showing in the meanwhile until the view controller is ready.<br>Then it calls viewDidAppear, when it has actually appeared. So that’s where you should be able to access a keyWindow</p>
+</blockquote>
+<p>系统读取 storyboard，初始化根视图控制器，通过调用 <code>viewDidLoad</code> 和 <code>viewWillAppear</code> 后，将其添加到 window 中并显示出来。<br>在这个过程中，系统并不是简单将这个 window 放在最前面，并显示视图控制器（中的视图）。由于这是第一个视图控制器，而且你没有将其放在（push/popping）一个导航控制器中。同时 <code>viewDidLoad</code> 方法需要一些时间运行，所以 Default.png 在这个时候展现出来直到视图控制器视图加载完毕。当视图已经完全显示出来之后会调用<code>viewDidAppear</code> 方法。所以在这个时候你才能获取到 keyWindow。</p>
+<p>根据这段话，我又试了下下面的代码</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)viewWillAppear:(<span class="built_in">BOOL</span>)animated&#123;</div><div class="line">    </div><div class="line">    <span class="built_in">UIWindow</span> *keyWindow = [[<span class="built_in">UIApplication</span> sharedApplication] keyWindow];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)viewDidAppear:(<span class="built_in">BOOL</span>)animated&#123;</div><div class="line">    </div><div class="line">    <span class="built_in">UIWindow</span> *keyWindow = [[<span class="built_in">UIApplication</span> sharedApplication] keyWindow];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>确实在 viewDidAppear 中获取到了 keyWindow，viewWillAppear 中就为 nil。<br>也就是说，如果用 storyboard 自动加载视图时，步骤是</p>
+<ol>
+<li>viewDidload</li>
+<li>viewWillAppear</li>
+<li>将 window 设置为 keyWindow</li>
+<li>viewDidAppear</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;- (&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt;)viewDidLoad &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    [&lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt; viewDidLoad];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;UIWindow&lt;/span&gt; *keyWindow = [[[&lt;span class=&quot;built_in&quot;&gt;UIApplication&lt;/span&gt; sharedApplication] keyWindow];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;最先用这个来获取 keywindow，结果获取到的是 nil，百思不得其解，最后在 &lt;a href=&quot;http://stackoverflow.com/questions/3359501/uiapplication-sharedapplication-keywindow-is-nil&quot;&gt;stackoverflow&lt;/a&gt;上找到了解决方式。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://yuntechs.me/categories/iOS/"/>
+    
+    
+      <category term="iOS" scheme="http://yuntechs.me/tags/iOS/"/>
+    
+      <category term="Objective-C" scheme="http://yuntechs.me/tags/Objective-C/"/>
+    
+      <category term="bug解决" scheme="http://yuntechs.me/tags/bug%E8%A7%A3%E5%86%B3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS  UIVisualEffectView  的使用</title>
+    <link href="http://yuntechs.me/2016/05/09/iOS-UIVisualEffectView%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>http://yuntechs.me/2016/05/09/iOS-UIVisualEffectView的使用/</id>
+    <published>2016-05-09T03:12:42.000Z</published>
+    <updated>2016-05-26T05:38:27.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>UIVisualEffectView 是 iOS8 中添加的模糊效果视图，它能实现毛玻璃的效果，如下图右。<br><img src="/picture/UIVisualEffectView.png" alt="图1.1"><br><a id="more"></a></p>
+<h1 id="UIVisualEffectView-类"><a href="#UIVisualEffectView-类" class="headerlink" title="UIVisualEffectView 类"></a>UIVisualEffectView 类</h1><p>UIVisualEffectView 类是继承 UIView 类的，它自身的属性和方法只有3个，分别如下：</p>
+<ul>
+<li><code>-(instancetype)initWithEffect:(UIVisualEffect *)effect</code><br>这个方法实例化一个 UIVisualEffectView，传入的参数是模糊的效果。</li>
+<li><code>@property(nonatomic, copy) UIVisualEffect *effect</code><br>这个属性是当前 visualEffect 视图的效果，<strong>只读</strong></li>
+<li><code>@property(nonatomic, strong, readonly) UIView *contentView</code><br>内容视图，如果需要在 visualEffect 视图中添加子视图，那么应该向 contentView 中添加，而不是直接在 visualEffect 中添加。只读</li>
+</ul>
+<p>在初始化方法中，需要传入一个 UIVisualEffect 类型的变量，这个变量决定了 visualEffect 视图的模糊方法。UIVisualEffect 类有两种：</p>
+<ul>
+<li>UIBlurEffect<br>模糊效果。blurEffect 有三种效果，分别为UIBlurEffectStyleExtraLight、UIBlurEffectStyleLight、UIBlurEffectStyleDark。</li>
+<li>UIVibrancyEffect<br>增强效果，主要用于增加子视图的显示效果。例如当一个 button 控件作为 UIVibrancyEffect 的子视图时，系统会自动将这个 button 的颜色和背景结合，整个过渡更加平缓，具体的例子可以看后面的图片。</li>
+</ul>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 添加 imageView 背景视图</span></div><div class="line"><span class="built_in">UIImageView</span> *imagev = [[<span class="built_in">UIImageView</span> alloc]initWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="keyword">self</span>.view.bounds.size.height, <span class="keyword">self</span>.view.bounds.size.width)];</div><div class="line">imagev.image = [<span class="built_in">UIImage</span> imageNamed:<span class="string">@"12.JPG"</span>];</div><div class="line">imagev.center = <span class="keyword">self</span>.view.center;</div><div class="line">[<span class="keyword">self</span>.view addSubview:imagev];</div><div class="line"></div><div class="line"><span class="comment">// 创建 blur 效果视图</span></div><div class="line"><span class="built_in">UIBlurEffect</span> *blur = [<span class="built_in">UIBlurEffect</span> effectWithStyle:<span class="built_in">UIBlurEffectStyleDark</span>];</div><div class="line"><span class="built_in">UIVisualEffectView</span> *blurView = [[<span class="built_in">UIVisualEffectView</span> alloc] initWithEffect:blur];</div><div class="line">blurView.frame = <span class="keyword">self</span>.view.bounds;</div><div class="line"></div><div class="line"><span class="comment">// 实例化一个 button，title 为 blur，为 blurView 的子视图</span></div><div class="line"><span class="built_in">UIButton</span> *bu = [<span class="built_in">UIButton</span> buttonWithType:<span class="built_in">UIButtonTypeCustom</span>];</div><div class="line">bu.frame = <span class="built_in">CGRectMake</span>(<span class="number">100</span>, <span class="number">170</span>, <span class="number">100</span>, <span class="number">50</span>);</div><div class="line">[bu setTitle:<span class="string">@"blur"</span> forState:<span class="built_in">UIControlStateNormal</span>];</div><div class="line"></div><div class="line"><span class="comment">// vibrancy 视图,是 blurView 的子视图</span></div><div class="line"><span class="built_in">UIVibrancyEffect</span> *vibrancy = [<span class="built_in">UIVibrancyEffect</span> effectForBlurEffect:blur];</div><div class="line"><span class="built_in">UIVisualEffectView</span> *vibrancyView = [[<span class="built_in">UIVisualEffectView</span> alloc] initWithEffect:vibrancy];</div><div class="line">vibrancyView.frame = <span class="keyword">self</span>.view.bounds;</div><div class="line"></div><div class="line"><span class="comment">// 第二个 button，为 vibrancy 的子视图</span></div><div class="line"><span class="built_in">UIButton</span> *bu1 = [<span class="built_in">UIButton</span> buttonWithType:<span class="built_in">UIButtonTypeCustom</span>];</div><div class="line">bu1.frame = <span class="built_in">CGRectMake</span>(<span class="number">50</span>, <span class="number">150</span>, <span class="number">100</span>, <span class="number">50</span>);</div><div class="line">[bu1 setTitle:<span class="string">@"vibrancy"</span> forState:<span class="built_in">UIControlStateNormal</span>];</div><div class="line">[bu1 setTitleColor:[<span class="built_in">UIColor</span> redColor] forState:<span class="built_in">UIControlStateNormal</span>];</div><div class="line"></div><div class="line"><span class="comment">// 子视图都要在 contentView 中添加</span></div><div class="line">[vibrancyView.contentView addSubview:bu1];</div><div class="line">[blurView.contentView addSubview:bu];</div><div class="line">[blurView.contentView addSubview:vibrancyView];</div><div class="line">[<span class="keyword">self</span>.view addSubview:blurView];</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;UIVisualEffectView 是 iOS8 中添加的模糊效果视图，它能实现毛玻璃的效果，如下图右。&lt;br&gt;&lt;img src=&quot;/picture/UIVisualEffectView.png&quot; alt=&quot;图1.1&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://yuntechs.me/categories/iOS/"/>
+    
+    
+      <category term="iOS" scheme="http://yuntechs.me/tags/iOS/"/>
+    
+      <category term="Objective-C" scheme="http://yuntechs.me/tags/Objective-C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS 页面传值（七）—— segue</title>
+    <link href="http://yuntechs.me/2016/05/05/iOS-%E9%A1%B5%E9%9D%A2%E4%BC%A0%E5%80%BC%E4%B8%83/"/>
+    <id>http://yuntechs.me/2016/05/05/iOS-页面传值七/</id>
+    <published>2016-05-05T09:43:22.000Z</published>
+    <updated>2016-05-06T11:04:52.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>segue 是 Xcode 中 storyboard 提供的一种连接模式。在StoryBoard中，页面传值是通过prepareForSegue:sender:方法实现。先设置连接的Identifier为 <strong>segue00</strong>，然后在代码中实现：</p>
+<a id="more"></a>
+<p><a href="/2016/04/25/iOS-页面传值总结">iOS 页面通信总结（一）—— 前言</a><br><a href="/2016/04/26/iOS-页面传值2代理">iOS 页面通信总结（二）—— block</a><br><a href="/2016/04/28/iOS-页面传值3通知">iOS 页面通信总结（三）—— 通知</a><br><a href="/2016/04/28/iOS-页面传值4观察者">iOS 页面通信总结（四）—— 观察者</a><br><a href="/2016/04/28/iOS-页面传值单例">iOS 页面通信总结（五）—— 单例</a><br><a href="/2016/04/29/iOS-页面传值直接传值">iOS 页面通信总结（六）—— 直接传值</a><br><a href="/2016/05/05/iOS-页面传值七">iOS 页面通信总结（七）—— segue传值</a><br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 页面一</span></div><div class="line">- (<span class="keyword">void</span>)prepareForSegue:(<span class="built_in">UIStoryboardSegue</span> *)segue sender:(<span class="keyword">id</span>)sender&#123;</div><div class="line">    </div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, segue.identifier);</div><div class="line">    <span class="keyword">if</span> ([segue.identifier  isEqual: <span class="string">@"segue00"</span>]) &#123;</div><div class="line">        </div><div class="line">        TwoViewController *vc = (TwoViewController *) segue.destinationViewController;</div><div class="line">        vc.name = <span class="keyword">self</span>.textField.text;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在页面二只要把传过来的字符串赋给 label.text 就行。<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</div><div class="line"></div><div class="line">    [<span class="keyword">super</span> viewDidLoad];</div><div class="line">    <span class="keyword">self</span>.label.text = <span class="keyword">self</span>.name;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;segue 是 Xcode 中 storyboard 提供的一种连接模式。在StoryBoard中，页面传值是通过prepareForSegue:sender:方法实现。先设置连接的Identifier为 &lt;strong&gt;segue00&lt;/strong&gt;，然后在代码中实现：&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://yuntechs.me/categories/iOS/"/>
+    
+    
+      <category term="iOS" scheme="http://yuntechs.me/tags/iOS/"/>
+    
+      <category term="Objective-C" scheme="http://yuntechs.me/tags/Objective-C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS 页面通信总结（六）—— 直接传值</title>
+    <link href="http://yuntechs.me/2016/04/29/iOS-%E9%A1%B5%E9%9D%A2%E4%BC%A0%E5%80%BC%E7%9B%B4%E6%8E%A5%E4%BC%A0%E5%80%BC/"/>
+    <id>http://yuntechs.me/2016/04/29/iOS-页面传值直接传值/</id>
+    <published>2016-04-29T13:50:49.000Z</published>
+    <updated>2016-05-06T11:05:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>直接传值就是把页面一这个实例直接传给页面二，在页面二中给其 label 赋值。</p>
+<a id="more"></a>
+<p><a href="/2016/04/25/iOS-页面传值总结">iOS 页面通信总结（一）—— 前言</a><br><a href="/2016/04/26/iOS-页面传值2代理">iOS 页面通信总结（二）—— block</a><br><a href="/2016/04/28/iOS-页面传值3通知">iOS 页面通信总结（三）—— 通知</a><br><a href="/2016/04/28/iOS-页面传值4观察者">iOS 页面通信总结（四）—— 观察者</a><br><a href="/2016/04/28/iOS-页面传值单例">iOS 页面通信总结（五）—— 单例</a><br><a href="/2016/04/29/iOS-页面传值直接传值">iOS 页面通信总结（六）—— 直接传值</a><br><a href="/2016/05/05/iOS-页面传值七">iOS 页面通信总结（七）—— segue传值</a><br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 页面一</span></div><div class="line">- (<span class="keyword">IBAction</span>)buttonAction:(<span class="built_in">UIButton</span> *)sender &#123;</div><div class="line">    </div><div class="line">    ViewTwoController *vc = [<span class="keyword">self</span>.storyboard instantiateViewControllerWithIdentifier:VIEWTWO];</div><div class="line"></div><div class="line">    vc.onevc = <span class="keyword">self</span>;</div><div class="line">    [<span class="keyword">self</span> presentViewController:vc animated:<span class="literal">YES</span> completion:<span class="literal">nil</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 页面二</span></div><div class="line">vc.oneVc.label.text = <span class="string">@"1111"</span>;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;直接传值就是把页面一这个实例直接传给页面二，在页面二中给其 label 赋值。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://yuntechs.me/categories/iOS/"/>
+    
+    
+      <category term="iOS" scheme="http://yuntechs.me/tags/iOS/"/>
+    
+      <category term="Objective-C" scheme="http://yuntechs.me/tags/Objective-C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS 页面通信总结（五）—— 单例</title>
+    <link href="http://yuntechs.me/2016/04/28/iOS-%E9%A1%B5%E9%9D%A2%E4%BC%A0%E5%80%BC%E5%8D%95%E4%BE%8B/"/>
+    <id>http://yuntechs.me/2016/04/28/iOS-页面传值单例/</id>
+    <published>2016-04-28T12:04:37.000Z</published>
+    <updated>2016-05-06T11:05:41.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>单例能保证程序中某个类实例是唯一的，在某些场合非常有用，比如一个音乐播放器，需要保证每次打开播放页面都是同一个，以防播放器多开。</p>
+<a id="more"></a>
+<p><a href="/2016/04/25/iOS-页面传值总结">iOS 页面通信总结（一）—— 前言</a><br><a href="/2016/04/26/iOS-页面传值2代理">iOS 页面通信总结（二）—— block</a><br><a href="/2016/04/28/iOS-页面传值3通知">iOS 页面通信总结（三）—— 通知</a><br><a href="/2016/04/28/iOS-页面传值4观察者">iOS 页面通信总结（四）—— 观察者</a><br><a href="/2016/04/28/iOS-页面传值单例">iOS 页面通信总结（五）—— 单例</a><br><a href="/2016/04/29/iOS-页面传值直接传值">iOS 页面通信总结（六）—— 直接传值</a><br><a href="/2016/05/05/iOS-页面传值七">iOS 页面通信总结（七）—— segue传值</a></p>
+<h1 id="talk-is-cheap-show-me-the-code"><a href="#talk-is-cheap-show-me-the-code" class="headerlink" title="talk is cheap, show me the code"></a>talk is cheap, show me the code</h1><p>单例传值重要的是保证页面二是单例的，所以我们可以先看页面二的实现。</p>
+<h2 id="页面二"><a href="#页面二" class="headerlink" title="页面二"></a>页面二</h2><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 页面二的单例实现</span></div><div class="line"><span class="keyword">static</span> ViewTwoController *instance;</div><div class="line">+ (<span class="keyword">instancetype</span>) defaultViewTwoController&#123;</div><div class="line">    </div><div class="line">    instance = [[ViewTwoController alloc] init];</div><div class="line">    <span class="keyword">return</span> instance;</div><div class="line">&#125;</div><div class="line"></div><div class="line">+ (<span class="keyword">instancetype</span>)allocWithZone:(<span class="keyword">struct</span> _NSZone *)zone&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">@synchronized</span> (<span class="keyword">self</span>) &#123;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> (instance == <span class="number">0</span>) &#123;</div><div class="line">            </div><div class="line">            instance = [<span class="keyword">super</span> allocWithZone:zone];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> instance;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">id</span>)<span class="keyword">copy</span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>单例重要的地方是复写 allocWithZone: 和 copy 方法。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 页面二按钮点击事件</span></div><div class="line">- (<span class="keyword">IBAction</span>)buttonAction:(<span class="built_in">UIButton</span> *)sender &#123;</div><div class="line">    </div><div class="line">    <span class="keyword">self</span>.name = <span class="keyword">self</span>.nameTextField.text;</div><div class="line">    [<span class="keyword">self</span> dismissViewControllerAnimated:<span class="literal">YES</span> completion:<span class="literal">nil</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="页面一"><a href="#页面一" class="headerlink" title="页面一"></a>页面一</h2><p>页面一自定了一个布尔类型变量 flag，表示是否第一次显示，以防第一次显示就将值赋给 label。<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">IBAction</span>)buttonAction:(<span class="built_in">UIButton</span> *)sender &#123;</div><div class="line">    </div><div class="line">    <span class="keyword">self</span>.flag = <span class="literal">YES</span>;</div><div class="line">    <span class="comment">// 这个方法依旧会调用 allocWithZone: 方法，所以依然是单例的</span></div><div class="line">    ViewTwoController *vc = [<span class="keyword">self</span>.storyboard instantiateViewControllerWithIdentifier:VIEWTWO];</div><div class="line">    [<span class="keyword">self</span> presentViewController:vc animated:<span class="literal">YES</span> completion:<span class="literal">nil</span>];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>) viewWillAppear:(<span class="built_in">BOOL</span>)animated&#123;</div><div class="line"></div><div class="line"><span class="comment">// 如果不是第一次显示，则赋值</span></div><div class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>.flag) &#123;</div><div class="line">        </div><div class="line">        ViewTwoController *vc = [ViewTwoController defaultViewTwoController];</div><div class="line">        <span class="keyword">self</span>.nameLabel.text = vc.name;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;单例能保证程序中某个类实例是唯一的，在某些场合非常有用，比如一个音乐播放器，需要保证每次打开播放页面都是同一个，以防播放器多开。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://yuntechs.me/categories/iOS/"/>
+    
+    
+      <category term="iOS" scheme="http://yuntechs.me/tags/iOS/"/>
+    
+      <category term="Objective-C" scheme="http://yuntechs.me/tags/Objective-C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS 页面传值（四）—— 观察者</title>
+    <link href="http://yuntechs.me/2016/04/28/iOS-%E9%A1%B5%E9%9D%A2%E4%BC%A0%E5%80%BC4%E8%A7%82%E5%AF%9F%E8%80%85/"/>
+    <id>http://yuntechs.me/2016/04/28/iOS-页面传值4观察者/</id>
+    <published>2016-04-28T02:09:20.000Z</published>
+    <updated>2016-05-06T11:05:51.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>观察者会观察被观察者的值，当值改变时会通知注册观察者的类，调用对应的方法。</p>
+<a id="more"></a>
+<p><a href="/2016/04/25/iOS-页面传值总结">iOS 页面通信总结（一）—— 前言</a><br><a href="/2016/04/26/iOS-页面传值2代理">iOS 页面通信总结（二）—— block</a><br><a href="/2016/04/28/iOS-页面传值3通知">iOS 页面通信总结（三）—— 通知</a><br><a href="/2016/04/28/iOS-页面传值4观察者">iOS 页面通信总结（四）—— 观察者</a><br><a href="/2016/04/28/iOS-页面传值单例">iOS 页面通信总结（五）—— 单例</a><br><a href="/2016/04/29/iOS-页面传值直接传值">iOS 页面通信总结（六）—— 直接传值</a><br><a href="/2016/05/05/iOS-页面传值七">iOS 页面通信总结（七）—— segue传值</a></p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><h2 id="页面一"><a href="#页面一" class="headerlink" title="页面一"></a>页面一</h2><p>因为官方已经实现好了观察者，所以用观察者实现传值非常简单，直接上代码。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">// 页面一，按钮事件</span></div><div class="line">- (<span class="keyword">IBAction</span>)buttonAction:(<span class="built_in">UIButton</span> *)sender &#123;</div><div class="line">    </div><div class="line">    ViewTwoController *cv = [<span class="keyword">self</span>.storyboard instantiateViewControllerWithIdentifier:VIEWTWO];</div><div class="line">    <span class="comment">// 注册观察者，观察的对象是页面二中的 name 属性变量</span></div><div class="line">    [cv addObserver:<span class="keyword">self</span> forKeyPath:<span class="string">@"name"</span> options:<span class="built_in">NSKeyValueObservingOptionNew</span> context:<span class="literal">nil</span>];</div><div class="line">    cv.oneVc = <span class="keyword">self</span>;</div><div class="line"></div><div class="line">    [<span class="keyword">self</span> presentViewController:cv animated:<span class="literal">YES</span> completion:<span class="literal">nil</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>之后是实现观察的接受消息方法:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">// 页面一，接受观察者的信息</span></div><div class="line">- (<span class="keyword">void</span>)observeValueForKeyPath:(<span class="built_in">NSString</span> *)keyPath ofObject:(<span class="keyword">id</span>)object change:(<span class="built_in">NSDictionary</span>&lt;<span class="built_in">NSString</span> *,<span class="keyword">id</span>&gt; *)change context:(<span class="keyword">void</span> *)context&#123;</div><div class="line">    </div><div class="line">    <span class="comment">// 取值并将值赋给页面一的 label</span></div><div class="line">    <span class="keyword">self</span>.nameLabel.text = change[<span class="string">@"new"</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="页面二"><a href="#页面二" class="headerlink" title="页面二"></a>页面二</h2><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- (<span class="keyword">IBAction</span>)buttonAction:(<span class="built_in">UIButton</span> *)sender &#123;</div><div class="line">    </div><div class="line">    <span class="comment">// 改变 name 的值，这时观察者会通知页面一</span></div><div class="line">    <span class="keyword">self</span>.name = <span class="keyword">self</span>.nameTextField.text;</div><div class="line">    [<span class="keyword">self</span> dismissViewControllerAnimated:<span class="literal">YES</span> completion:<span class="literal">nil</span>];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)dealloc&#123;</div><div class="line">    </div><div class="line">    [<span class="keyword">self</span> removeObserver:<span class="keyword">self</span>.oneVc forKeyPath:<span class="string">@"name"</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意，只有当用 setter 方法设值时，观察者才响应。观察者必须手动移除。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;观察者会观察被观察者的值，当值改变时会通知注册观察者的类，调用对应的方法。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://yuntechs.me/categories/iOS/"/>
+    
+    
+      <category term="iOS" scheme="http://yuntechs.me/tags/iOS/"/>
+    
+      <category term="Objective-C" scheme="http://yuntechs.me/tags/Objective-C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS 页面传值（三）—— 通知</title>
+    <link href="http://yuntechs.me/2016/04/28/iOS-%E9%A1%B5%E9%9D%A2%E4%BC%A0%E5%80%BC3%E9%80%9A%E7%9F%A5/"/>
+    <id>http://yuntechs.me/2016/04/28/iOS-页面传值3通知/</id>
+    <published>2016-04-28T01:34:21.000Z</published>
+    <updated>2016-05-06T11:05:05.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>对于我这初学者来说，通知也是挺简单的一种页面传值，所以不多 bb，直接上代码。</p>
+<a id="more"></a>
+<p><a href="/2016/04/25/iOS-页面传值总结">iOS 页面通信总结（一）—— 前言</a><br><a href="/2016/04/26/iOS-页面传值2代理">iOS 页面通信总结（二）—— block</a><br><a href="/2016/04/28/iOS-页面传值3通知">iOS 页面通信总结（三）—— 通知</a><br><a href="/2016/04/28/iOS-页面传值4观察者">iOS 页面通信总结（四）—— 观察者</a><br><a href="/2016/04/28/iOS-页面传值单例">iOS 页面通信总结（五）—— 单例</a><br><a href="/2016/04/29/iOS-页面传值直接传值">iOS 页面通信总结（六）—— 直接传值</a><br><a href="/2016/05/05/iOS-页面传值七">iOS 页面通信总结（七）—— segue传值</a></p>
+<h1 id="页面一"><a href="#页面一" class="headerlink" title="页面一"></a>页面一</h1><p>在 viewDidLoad 中注册下通知</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</div><div class="line"></div><div class="line">    [<span class="keyword">super</span> viewDidLoad];</div><div class="line">    [[<span class="built_in">NSNotificationCenter</span> defaultCenter] addObserver:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(message:) name:<span class="string">@"message"</span> object:<span class="literal">nil</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>实现接受通知后调用的函数</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- (<span class="keyword">void</span>) message: (<span class="built_in">NSNotification</span> *) notification&#123;</div><div class="line">    </div><div class="line">    <span class="built_in">NSDictionary</span> *userInfo = notification.userInfo;</div><div class="line">    <span class="keyword">self</span>.nameLabel.text = userInfo[<span class="string">@"name"</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>移除通知</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- (<span class="keyword">void</span>)dealloc&#123;</div><div class="line">    </div><div class="line">    [[<span class="built_in">NSNotificationCenter</span> defaultCenter] removeObserver:<span class="keyword">self</span> name:<span class="string">@"message"</span> object:<span class="literal">nil</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="页面二"><a href="#页面二" class="headerlink" title="页面二"></a>页面二</h1><p>主要是在按钮事件中添加发送通知的代码</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- (<span class="keyword">IBAction</span>)buttonAction:(<span class="built_in">UIButton</span> *)sender &#123;</div><div class="line">    </div><div class="line">    <span class="built_in">NSDictionary</span> *dict = @&#123;<span class="string">@"name"</span>:<span class="keyword">self</span>.nameTextField.text&#125;;</div><div class="line">   [[<span class="built_in">NSNotificationCenter</span> defaultCenter] postNotificationName:<span class="string">@"message"</span> object:<span class="literal">nil</span> userInfo:dict];</div><div class="line">    [<span class="keyword">self</span> dismissViewControllerAnimated:<span class="literal">YES</span> completion:<span class="literal">nil</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后就 OK 啦。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;对于我这初学者来说，通知也是挺简单的一种页面传值，所以不多 bb，直接上代码。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://yuntechs.me/categories/iOS/"/>
+    
+    
+      <category term="iOS" scheme="http://yuntechs.me/tags/iOS/"/>
+    
+      <category term="Objective-C" scheme="http://yuntechs.me/tags/Objective-C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS 页面传值（二）—— block</title>
+    <link href="http://yuntechs.me/2016/04/26/iOS-%E9%A1%B5%E9%9D%A2%E4%BC%A0%E5%80%BC2%E4%BB%A3%E7%90%86/"/>
+    <id>http://yuntechs.me/2016/04/26/iOS-页面传值2代理/</id>
+    <published>2016-04-26T01:05:20.000Z</published>
+    <updated>2016-05-06T11:05:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>之前有写用代理方法进行页面传值，这回用 block 方法来实现页面传值。<br>同样是在第二个页面输入名字，在第一个页面中显示出来。<br><a id="more"></a><br><a href="/2016/04/25/iOS-页面传值总结">iOS 页面通信总结（一）—— 前言</a><br><a href="/2016/04/26/iOS-页面传值2代理">iOS 页面通信总结（二）—— block</a><br><a href="/2016/04/28/iOS-页面传值3通知">iOS 页面通信总结（三）—— 通知</a><br><a href="/2016/04/28/iOS-页面传值4观察者">iOS 页面通信总结（四）—— 观察者</a><br><a href="/2016/04/28/iOS-页面传值单例">iOS 页面通信总结（五）—— 单例</a><br><a href="/2016/04/29/iOS-页面传值直接传值">iOS 页面通信总结（六）—— 直接传值</a><br><a href="/2016/04/28/iOS-页面传值2代理/">iOS 页面通信总结（七）—— segue传值](/2016/05/05/iOS-页面传值七)总结（七）——segue传值</a></p>
+<h1 id="开始之前的思考"><a href="#开始之前的思考" class="headerlink" title="开始之前的思考"></a>开始之前的思考</h1><p>首先需要确定 block 应该在哪里被调用。按照需求，按下页面二的按钮后，要对页面一的 label 进行修改，那么应该是在页面二调用 block，在页面一对 block 变量进行赋值。</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><h2 id="页面一实现"><a href="#页面一实现" class="headerlink" title="页面一实现"></a>页面一实现</h2><p>主要是按钮按下事件的实现：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">IBAction</span>)buttonAction:(<span class="built_in">UIButton</span> *)sender &#123;</div><div class="line">    </div><div class="line">    ViewTwoController *cv = [<span class="keyword">self</span>.storyboard instantiateViewControllerWithIdentifier:VIEWTWO];</div><div class="line"></div><div class="line"><span class="comment">// 对页面二的 block 变量进行设置</span></div><div class="line">    cv.messageBlock = ^(<span class="built_in">NSString</span> *name)&#123;</div><div class="line">      </div><div class="line">        <span class="keyword">self</span>.nameLabel.text = name;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    [<span class="keyword">self</span> presentViewController:cv animated:<span class="literal">YES</span> completion:<span class="literal">nil</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="页面二的实现"><a href="#页面二的实现" class="headerlink" title="页面二的实现"></a>页面二的实现</h2><p>页面二中，重要的也是按钮按下事件的实现，当然，首先要看 block 的声明：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 我这里是在 .h 中声明</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">void</span>(^messageBlock)(<span class="built_in">NSString</span> *);<span class="comment">// 声明并重命名 block</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ViewTwoController</span> : <span class="title">UIViewController</span></span></div><div class="line"></div><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) messageBlock messageBlock;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<p>以上什么了一个 block 属性变量，注意 block 一定要用 copy 来管理内存。</p>
+<p>然后按钮事件的实现:<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">IBAction</span>)buttonAction:(<span class="built_in">UIButton</span> *)sender &#123;</div><div class="line">    </div><div class="line">    <span class="comment">// 这里调用了 block</span></div><div class="line">    <span class="keyword">self</span>.messageBlock(<span class="keyword">self</span>.nameTextField.text);</div><div class="line">    [<span class="keyword">self</span> dismissViewControllerAnimated:<span class="literal">YES</span> completion:<span class="literal">nil</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="整个过程"><a href="#整个过程" class="headerlink" title="整个过程"></a>整个过程</h1><p> block 是一个匿名函数代码块，为了更好理解，下面用匿名函数来代替 block。<br> 首先在页面一中，将实现的匿名函数代码块（的地址）传给页面二的 block 变量，代码块中包含了页面一中 nameLabel 实例地址。当页面二调用 block 时，会将自己的 textField 中的值赋给传递过来的 nameLabel。这样就完成了页面间的传值。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;之前有写用代理方法进行页面传值，这回用 block 方法来实现页面传值。&lt;br&gt;同样是在第二个页面输入名字，在第一个页面中显示出来。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://yuntechs.me/categories/iOS/"/>
+    
+    
+      <category term="iOS" scheme="http://yuntechs.me/tags/iOS/"/>
+    
+      <category term="Objective-C" scheme="http://yuntechs.me/tags/Objective-C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS 页面通信总结（一）—— 代理</title>
+    <link href="http://yuntechs.me/2016/04/25/iOS-%E9%A1%B5%E9%9D%A2%E4%BC%A0%E5%80%BC%E6%80%BB%E7%BB%93/"/>
+    <id>http://yuntechs.me/2016/04/25/iOS-页面传值总结/</id>
+    <published>2016-04-25T13:18:55.000Z</published>
+    <updated>2016-05-28T02:19:26.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>页面间通信可是说是 APP 开发里面基本且重要的内容，今天有空来总结下页面间通信的各种方法。当然，大多页面传值的方法也可以用在不同对象间传值。<br>页面通信大概有代理、block、通知、观察者、单例、直接传值、转场（segue）这7种方法，作为一个初学者，我也无法形而向上地讨论这几种方法的优劣，不过可以抛砖引玉，简单地说下自己的理解。<br><a id="more"></a></p>
+<p><a href="/2016/04/25/iOS-页面传值总结">iOS 页面通信总结（一）—— 前言</a><br><a href="/2016/04/26/iOS-页面传值2代理">iOS 页面通信总结（二）—— block</a><br><a href="/2016/04/28/iOS-页面传值3通知">iOS 页面通信总结（三）—— 通知</a><br><a href="/2016/04/28/iOS-页面传值4观察者">iOS 页面通信总结（四）—— 观察者</a><br><a href="/2016/04/28/iOS-页面传值单例">iOS 页面通信总结（五）—— 单例</a><br><a href="/2016/04/29/iOS-页面传值直接传值">iOS 页面通信总结（六）—— 直接传值</a><br><a href="/2016/05/05/iOS-页面传值七">iOS 页面通信总结（七）—— segue传值</a></p>
+<ul>
+<li><p>代理<br>代理需要设置一个协议，会使代码量增多，但是他的逻辑比较清晰，好理解。</p>
+</li>
+<li><p>block<br>代码量少，实现简单，但是逻辑上可能比代理模糊一些。</p>
+</li>
+<li><p>通知<br>作为一个初学者，感觉通知是最简单的，逻辑上也比较好理解,但是他的效率比较低。</p>
+</li>
+<li><p>观察者<br>实现简单，但是局限比较大。而且个人感觉，在某些状况下没有很好的解耦合。</p>
+</li>
+<li><p>单例<br>很好玩，同样局限较大</p>
+</li>
+<li><p>直接传值<br>会使两个类耦合了，违反了设计模式原则，非常不推荐，但是可以玩下。</p>
+</li>
+<li><p>segue<br>苹果给的 API，感觉挺无脑的，只能用于两个页面间的传值，其他我也不知道怎么说……(心伤)</p>
+</li>
+</ul>
+<p>情景：页面一是显示页面，显示内容为用户在第二个页面填入的名字，有一个 UILabel 控件和 UIButton。页面二有一个 UITextField 和一个 UIButton。</p>
+<h1 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h1><p>根据需求，需要在页面二跳回页面一时告诉页面一更新数据。这里页面一需要做事情，而页面二是通知事情。所以代理的实现应该是在页面一，而页面二需要一个代理属性用于实现回调函数。</p>
+<h2 id="页面一的实现"><a href="#页面一的实现" class="headerlink" title="页面一的实现"></a>页面一的实现</h2><p>有 ViewController.h 和 ViewController.m 文件。</p>
+<ol>
+<li>导入页面二头文件，并在 .h 文件中定义代理协议，并且使页面一遵从协议</li>
+</ol>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ViewController.h</span></div><div class="line"><span class="class"><span class="keyword">@protocol</span> <span class="title">MessageBetweenViewsDelegate</span> &lt;<span class="title">NSObject</span>&gt;</span></div><div class="line"></div><div class="line">- (<span class="keyword">void</span>) messageAction: (<span class="built_in">NSString</span> *)name;</div><div class="line"><span class="keyword">@end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ViewController</span> : <span class="title">UIViewController</span> &lt;<span class="title">MessageBetweenViewsDelegate</span>&gt;</span></div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<ol>
+<li>代理实现</li>
+</ol>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ViewController.m</span></div><div class="line">- (<span class="keyword">void</span>) messageAction:(<span class="built_in">NSString</span> *)name&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">self</span>.nameLabel.text = name;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>按钮事件实现</li>
+</ol>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">IBAction</span>)buttonAction:(<span class="built_in">UIButton</span> *)sender &#123;</div><div class="line">    </div><div class="line">    ViewTwoController *cv = [<span class="keyword">self</span>.storyboard instantiateViewControllerWithIdentifier:VIEWTWO];</div><div class="line">    cv.delegate = <span class="keyword">self</span>;<span class="comment">// 设置代理</span></div><div class="line">    [<span class="keyword">self</span> presentViewController:cv animated:<span class="literal">YES</span> completion:<span class="literal">nil</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="页面二实现"><a href="#页面二实现" class="headerlink" title="页面二实现"></a>页面二实现</h2><p>有 ViewTwoController.h 和 ViewTwoController.m 文件。</p>
+<ol>
+<li>导入 ViewController.h，设置代理属性变量</li>
+</ol>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">"ViewController.h"</span></span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ViewTwoController</span> : <span class="title">UIViewController</span></span></div><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) <span class="keyword">id</span> &lt;MessageBetweenViewsDelegate&gt; delegate;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<ol>
+<li>按钮事件实现，实现代理回调函数</li>
+</ol>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">IBAction</span>)buttonAction:(<span class="built_in">UIButton</span> *)sender &#123;</div><div class="line">    </div><div class="line">    [<span class="keyword">self</span>.delegate messageAction:<span class="keyword">self</span>.nameTextField.text]; <span class="comment">// 回调</span></div><div class="line">    [<span class="keyword">self</span> dismissViewControllerAnimated:<span class="literal">YES</span> completion:<span class="literal">nil</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最后运行可以实现在页面二输入名字，确定后在页面一显示出来。<br><img src="/picture/页面通信页面二.png" alt="页面一视图"><br><img src="/picture/页面通信页面一.png" alt="页面二视图"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;页面间通信可是说是 APP 开发里面基本且重要的内容，今天有空来总结下页面间通信的各种方法。当然，大多页面传值的方法也可以用在不同对象间传值。&lt;br&gt;页面通信大概有代理、block、通知、观察者、单例、直接传值、转场（segue）这7种方法，作为一个初学者，我也无法形而向上地讨论这几种方法的优劣，不过可以抛砖引玉，简单地说下自己的理解。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://yuntechs.me/categories/iOS/"/>
+    
+    
+      <category term="iOS" scheme="http://yuntechs.me/tags/iOS/"/>
+    
+      <category term="Objective-C" scheme="http://yuntechs.me/tags/Objective-C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OC runtime 中的消息转发</title>
+    <link href="http://yuntechs.me/2016/04/21/iOS-runtime-%E4%B8%AD%E7%9A%84%E6%B6%88%E6%81%AF%E8%BD%AC%E5%8F%91/"/>
+    <id>http://yuntechs.me/2016/04/21/iOS-runtime-中的消息转发/</id>
+    <published>2016-04-21T11:15:23.000Z</published>
+    <updated>2016-04-25T13:21:33.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>从开始学 OC 的时候就听说了 runtime，但是一直没有去看，今天找到了一篇讲 runtime 的文章，感觉内容对我来说不算很深，深入浅出地剖析了 runtime 的消息转发机制，下面是我阅读后的总结。<br>所有源码来自<a href="http://opensource.apple.com/source/objc4/objc4-680/runtime/runtime.h" target="_blank" rel="external">opensource.apple</a>。</p>
+<a id="more"></a>
+<h1 id="OC-中类的实现"><a href="#OC-中类的实现" class="headerlink" title="OC 中类的实现"></a>OC 中类的实现</h1><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> objc_class &#123;</div><div class="line">Class isa  OBJC_ISA_AVAILABILITY;</div><div class="line"></div><div class="line"><span class="meta">#if !__OBJC2__</span></div><div class="line">Class super_class                                        OBJC2_UNAVAILABLE;</div><div class="line"><span class="keyword">const</span> <span class="keyword">char</span> *name                                         OBJC2_UNAVAILABLE;</div><div class="line"><span class="keyword">long</span> version                                             OBJC2_UNAVAILABLE;</div><div class="line"><span class="keyword">long</span> info                                                OBJC2_UNAVAILABLE;</div><div class="line"><span class="keyword">long</span> instance_size                                       OBJC2_UNAVAILABLE;</div><div class="line"><span class="keyword">struct</span> objc_ivar_list *ivars                             OBJC2_UNAVAILABLE;</div><div class="line"><span class="keyword">struct</span> objc_method_list **methodLists                    OBJC2_UNAVAILABLE;</div><div class="line"><span class="keyword">struct</span> objc_cache *cache                                 OBJC2_UNAVAILABLE;</div><div class="line"><span class="keyword">struct</span> objc_protocol_list *protocols                     OBJC2_UNAVAILABLE;</div><div class="line"><span class="meta">#endif</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其中，在 runtime 消息转发中比较重要的是isa，super，methodLists 变量。<br>isa 和 super 都是 Class 类型，methodLists 是一个objc_method_list 类型的指向指针的指针。</p>
+<h2 id="Class-类型"><a href="#Class-类型" class="headerlink" title="Class 类型"></a>Class 类型</h2><p>Class 类型声明如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_class *Class;</div></pre></td></tr></table></figure>
+<p>可见这是一个 objc_class 的指针变量，也就是说，isa 其实就是这个 objc_class 这个结构，也可以理解为 self。而 super_class 是指向父类的 objc_class</p>
+<h2 id="objc-method-list"><a href="#objc-method-list" class="headerlink" title="objc_method_list"></a>objc_method_list</h2><p>objc_method_list 类型声明如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> objc_method_list &#123;</div><div class="line">    <span class="keyword">struct</span> objc_method_list *obsolete                        OBJC2_UNAVAILABLE;</div><div class="line"><span class="keyword">int</span> method_count                                         OBJC2_UNAVAILABLE;</div><div class="line"><span class="meta">#ifdef __LP64__</span></div><div class="line">    <span class="keyword">int</span> space                                                OBJC2_UNAVAILABLE;</div><div class="line"><span class="meta">#endif</span></div><div class="line">    <span class="comment">/* variable length structure */</span></div><div class="line">    <span class="keyword">struct</span> objc_method method_list[<span class="number">1</span>]                        OBJC2_UNAVAILABLE;</div><div class="line">&#125;                                                            OBJC2_UNAVAILABLE;</div></pre></td></tr></table></figure>
+<p>其中 method_count 是指类中的方法个数，method_list[1] 是一个 objc_method 结构体的数组，其中包含当前实例中所有的方法，objc_method 结构体的声明是：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> objc_method &#123;</div><div class="line">    SEL method_name                                          OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">char</span> *method_types                                       OBJC2_UNAVAILABLE;</div><div class="line">    IMP method_imp                                           OBJC2_UNAVAILABLE;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其中 method_name 是 SEL 类型，就是@selector(method)所表达的类型，@selector(method)是方法的唯一标识。<br>第二个 method_types 是一个字符串，用来表示方法的返回值类型以及每个参数的类型（用@encode 方式来表示类型）。<br>第三个 method_imp 是 IMP 类型，它表示对应 selector 的地址，在 OC 底层，任何方法都是 C 的函数。</p>
+<h1 id="runtime-中消息转发机制的流程与解析"><a href="#runtime-中消息转发机制的流程与解析" class="headerlink" title="runtime 中消息转发机制的流程与解析"></a>runtime 中消息转发机制的流程与解析</h1><p>OC 中每次调用函数都是基于 runtime 运行的，例如[person sayHi],这其实发送消息。<br>编译器会把[perosn sayHi]转化为 objc_msgSend(person, sayHi];<br>objc_msgSend 是 Objective-C Runtime 中的函数，这个函数定义在 <objc message.h=""> 头文件中。</objc></p>
+<h2 id="objc-msgSend-做了什么"><a href="#objc-msgSend-做了什么" class="headerlink" title="objc_msgSend 做了什么"></a>objc_msgSend 做了什么</h2><p>objc_msgSend 负责 runtime 的核心——消息转发。</p>
+<p><img src="/picture/objc_msgSend流程图.png" alt=""><br>流程：[person sayHi]被转化为 objc_msgSend(person, @selector(sayHi)),之后发送消息给 Person 实例， 在 methodLists 中按照@selector(sayHi)找到函数地址，最后调用 sayHi(person, @selector(sayHi));<br>其中@selector(sayHi)是函数独一无二的标识，注意@selector 不是一个函数。</p>
+<h2 id="函数的实现"><a href="#函数的实现" class="headerlink" title="函数的实现"></a>函数的实现</h2><p>从上图可以看到最后调用的是 sayHi(person, @selector(sayHi))，第一个参数其实就是 self，第二个是_cmd，这个很少用到不深入。<br>也就是说，即时我在 OC 中声明的函数是没有传入参数的，但是在最终调用时至少是有两个参数会被传入的。底层函数的原型就是为：void sayHi(Person self, SEL _cmd)。<br>在回到之前所说的函数结构体是这样的：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> objc_method&#123;</div><div class="line">    SEL method_name;</div><div class="line">    <span class="keyword">char</span> *method_types;</div><div class="line">    IMP method_imp;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在里面，SEL（@selector（sayHi））是一个函数标识符，而 methodLists_imp 存储函数地址，所以说@selector 其实表示的是函数名字，实际调用的是函数的地址。</p>
+<h2 id="消息缓存"><a href="#消息缓存" class="headerlink" title="消息缓存"></a>消息缓存</h2><p>消息转发的过程是非常耗时间的，所以 OC 中建立了消息缓存机制。在 objc_class 中有一个变量：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> objc_cache *cache   </div><div class="line">这个就是消息缓存类型，objc_cache 的声明是：</div><div class="line"><span class="keyword">struct</span> objc_cache &#123;</div><div class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span> mask <span class="comment">/* total = mask + 1 */</span>                 OBJC2_UNAVAILABLE;</div><div class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span> occupied                                    OBJC2_UNAVAILABLE;</div><div class="line">Method buckets[<span class="number">1</span>]                                        OBJC2_UNAVAILABLE;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>objc_cache 维护了一个哈希表，使用 Selector 作为键，存储了缓存的函数列表。<br>了解了这些，消息分发的时候，首先会在 cache 里面进行匹配，如果我们发送的消息所对应的函数在 cache 中能够找到，就直接执行这个函数了。 如果 cache 中没有，才会真的去查找 methodLists 列表，并且成功匹配一次后，就将它放入缓存中，以后再调用这个方法就不会重新的进行查表操作了。</p>
+</blockquote>
+<h2 id="消息转发的优先级"><a href="#消息转发的优先级" class="headerlink" title="消息转发的优先级"></a>消息转发的优先级</h2><p>现在本类的 methodLists 中查找，如果没有，通过 super_class 变量到父类的 methodLists 中查找，知道找到函数。如果遍历完依旧没有找到，会抛出：<br><code>unrecognized selector sent to instance</code></p>
+<h2 id="直接调用-objc-msgSend"><a href="#直接调用-objc-msgSend" class="headerlink" title="直接调用 objc_msgSend()"></a>直接调用 objc_msgSend()</h2><p>如果直接调用 objc_msgSend()来转换消息呢。<br>    a. #import<objc message.h=""><br>    b. 调用 ((void)(*)(id, SEL))objc_msgSend)(self, @selector(sayHi));<br>因为 objc/message.h 中没有声明 objc_msgSend()的形参，所以要强制转换之后再进行调用。<br>运行之后便会调用 sayHi函数。</objc></p>
+<p>本文参考了<a href="http://swiftcafe.io/2016/01/16/objc-runtime/" target="_blank" rel="external">Objective-C Runtime 消息机制 - 代码背后发生的事情</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;从开始学 OC 的时候就听说了 runtime，但是一直没有去看，今天找到了一篇讲 runtime 的文章，感觉内容对我来说不算很深，深入浅出地剖析了 runtime 的消息转发机制，下面是我阅读后的总结。&lt;br&gt;所有源码来自&lt;a href=&quot;http://opensource.apple.com/source/objc4/objc4-680/runtime/runtime.h&quot;&gt;opensource.apple&lt;/a&gt;。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Objective-C" scheme="http://yuntechs.me/categories/Objective-C/"/>
+    
+    
+      <category term="iOS" scheme="http://yuntechs.me/tags/iOS/"/>
+    
+      <category term="Objective-C" scheme="http://yuntechs.me/tags/Objective-C/"/>
+    
+      <category term="runtime" scheme="http://yuntechs.me/tags/runtime/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS 单例模式</title>
+    <link href="http://yuntechs.me/2016/04/21/iOS-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://yuntechs.me/2016/04/21/iOS-单例模式/</id>
+    <published>2016-04-21T08:35:37.000Z</published>
+    <updated>2016-07-10T02:45:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>单例模式的定义是确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。所以重要的是要保证这个类只有一个实例，要把可能新实例化的方式都屏蔽掉，而 alloc 会调用 allocWithZone，copy 会复制一个实例，所以要重写 allocWithZone 和 copy 来防止实例化多个实例。</p>
+<a id="more"></a>
+<h1 id="第一种单例模式例子"><a href="#第一种单例模式例子" class="headerlink" title="第一种单例模式例子"></a>第一种单例模式例子</h1><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Husband</span></span></div><div class="line"></div><div class="line"><span class="comment">// 保证一个 Husband 类型变量一直存在</span></div><div class="line"><span class="keyword">static</span> Husband *instance = <span class="literal">nil</span>;</div><div class="line"></div><div class="line"><span class="comment">// 实现 defaultHusband 来返回实例。</span></div><div class="line">+ (Husband *) defaultHusband&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">@synchronized</span> (<span class="keyword">self</span>) &#123;<span class="comment">// 线程保护</span></div><div class="line">        </div><div class="line">        <span class="keyword">if</span> (instance == <span class="literal">nil</span>) &#123;<span class="comment">// 如果实例没有被实例化，则进行实例化。其实这里可以不用进行判断的，直接在 allocWithZone 中判断就可以了</span></div><div class="line">            </div><div class="line">            instance = [[Husband alloc] init];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> instance;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// alloc 函数会调用 allocWithZone 函数，所以复写这个函数以防其他人直接调用这个函数来实例化一个新的实例。</span></div><div class="line">+ (<span class="keyword">instancetype</span>)allocWithZone:(<span class="keyword">struct</span> _NSZone *)zone&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">@synchronized</span> (<span class="keyword">self</span>) &#123;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> (instance == <span class="literal">nil</span>) &#123;</div><div class="line">            </div><div class="line">            instance = [<span class="keyword">super</span> allocWithZone:zone];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> instance;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 复写 copy 来防止 copy 了新的实例</span></div><div class="line">- (<span class="keyword">id</span>)<span class="keyword">copy</span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<h1 id="另一种单例模式例子（2016-6-3更新）"><a href="#另一种单例模式例子（2016-6-3更新）" class="headerlink" title="另一种单例模式例子（2016.6.3更新）"></a>另一种单例模式例子（2016.6.3更新）</h1><p>这种单例是用 GCD 中的 dispatch_once 来做的。有说法是因为普通的单例实现会在异步并发执行时造成问题，但是我实验了下发现并没有发现问题，不过还是先把这种方法记录下来。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Husband</span></span></div><div class="line"></div><div class="line"><span class="keyword">static</span> Husband *instance;</div><div class="line">+ (<span class="keyword">instancetype</span>)shareHusband&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">if</span>(!instance)&#123;</div><div class="line">        instance = [[Husband alloc] init];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> instance;</div><div class="line">&#125;</div><div class="line"></div><div class="line">+ (<span class="keyword">instancetype</span>)allocWithZone:(<span class="keyword">struct</span> _NSZone *)zone&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> (!instance) &#123;</div><div class="line">        </div><div class="line">        <span class="keyword">static</span> <span class="built_in">dispatch_once_t</span> onceToken;</div><div class="line">        <span class="built_in">dispatch_once</span>(&amp;onceToken, ^&#123;</div><div class="line">            </div><div class="line">            instance = [<span class="keyword">super</span> allocWithZone:zone];</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> instance;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">id</span>)<span class="keyword">copy</span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;单例模式的定义是确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。所以重要的是要保证这个类只有一个实例，要把可能新实例化的方式都屏蔽掉，而 alloc 会调用 allocWithZone，copy 会复制一个实例，所以要重写 allocWithZone 和 copy 来防止实例化多个实例。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://yuntechs.me/categories/iOS/"/>
+    
+    
+      <category term="iOS" scheme="http://yuntechs.me/tags/iOS/"/>
+    
+      <category term="Objective-C" scheme="http://yuntechs.me/tags/Objective-C/"/>
+    
+      <category term="设计模式" scheme="http://yuntechs.me/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+</feed>
