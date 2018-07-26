@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yuntechs.me/"/>
-  <updated>2017-11-14T02:37:02.916Z</updated>
+  <updated>2017-11-22T02:50:06.089Z</updated>
   <id>http://yuntechs.me/</id>
   
   <author>
@@ -14,34 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>iOS 音频处理</title>
-    <link href="http://yuntechs.me/2017/11/14/iOS-%E9%9F%B3%E9%A2%91%E5%A4%84%E7%90%86/"/>
-    <id>http://yuntechs.me/2017/11/14/iOS-音频处理/</id>
-    <published>2017-11-14T02:37:02.000Z</published>
-    <updated>2017-11-14T02:37:02.916Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>iOS 核心动画之 CAReplicatorLayer</title>
-    <link href="http://yuntechs.me/2017/11/14/iOS-%E6%A0%B8%E5%BF%83%E5%8A%A8%E7%94%BB%E4%B9%8B-CAReplicatorLayer/"/>
-    <id>http://yuntechs.me/2017/11/14/iOS-核心动画之-CAReplicatorLayer/</id>
-    <published>2017-11-14T02:31:39.000Z</published>
-    <updated>2017-11-14T02:31:39.803Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>iOS 中遇到的一些问题</title>
@@ -64,46 +36,6 @@
     
       &lt;ul&gt;
 &lt;li&gt;原来没有约束是有圆角的，加了约束有圆角失效&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2
-    
-    </summary>
-    
-      <category term="iOS" scheme="http://yuntechs.me/categories/iOS/"/>
-    
-    
-      <category term="iOS" scheme="http://yuntechs.me/tags/iOS/"/>
-    
-      <category term="Objective-C" scheme="http://yuntechs.me/tags/Objective-C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>runtime 机制了解</title>
-    <link href="http://yuntechs.me/2017/11/03/runtime-%E6%9C%BA%E5%88%B6%E4%BA%86%E8%A7%A3/"/>
-    <id>http://yuntechs.me/2017/11/03/runtime-机制了解/</id>
-    <published>2017-11-03T05:20:16.000Z</published>
-    <updated>2017-11-03T05:20:35.645Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="iOS" scheme="http://yuntechs.me/categories/iOS/"/>
-    
-    
-      <category term="iOS" scheme="http://yuntechs.me/tags/iOS/"/>
-    
-      <category term="Objective-C" scheme="http://yuntechs.me/tags/Objective-C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SDWebImage 源码阅读</title>
-    <link href="http://yuntechs.me/2017/11/03/SDWebImage%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/"/>
-    <id>http://yuntechs.me/2017/11/03/SDWebImage源码阅读/</id>
-    <published>2017-11-03T05:19:11.000Z</published>
-    <updated>2017-11-03T06:01:22.291Z</updated>
-    
-    <summary type="html">
     
     </summary>
     
@@ -651,6 +583,250 @@
       <category term="Objective-C" scheme="http://yuntechs.me/tags/Objective-C/"/>
     
       <category term="设计模式" scheme="http://yuntechs.me/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OC 中的 KVO</title>
+    <link href="http://yuntechs.me/2016/04/19/OC%E4%B8%AD%E7%9A%84KVO/"/>
+    <id>http://yuntechs.me/2016/04/19/OC中的KVO/</id>
+    <published>2016-04-19T09:13:11.000Z</published>
+    <updated>2016-05-26T09:48:28.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>KVO 是观察者设计模式。</p>
+<blockquote>
+<p>Define a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically（定义对象间一种一对多的依赖关系，以至于但一个对象改变状态时，所有其他依赖的对象都会得到通知并被自动更新 ———— 设计模式之禅）</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="OC-中的-KVO"><a href="#OC-中的-KVO" class="headerlink" title="OC 中的 KVO"></a>OC 中的 KVO</h1><p>OC 中已经实现了观察者，所以我们直接使用就可以了。</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li>注册观察者</li>
+<li>实现接受观察者通知的方法</li>
+<li>移除观察者</li>
+</ol>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><ul>
+<li><p><code>-(void)addObserver:(NSObject *)anObserver forKeyPath:(NSString *)keyPath options:(NSKeyValueObservingOptions)options context:(void *)context</code><br>向实例注册一个观察者。<br>anObserver: 接受观察者消息的类<br>keyPath: 键路径<br>options: 观察者设置<br>context: 一般为 nil</p>
+</li>
+<li><p><code>-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary&lt;NSString *,id&gt; *)change context:(void *)context</code><br>在注册了观察者的类中要实现这个方法，这个方法会接受传递过来的通知，并进行处理</p>
+</li>
+<li><p><code>(void)removeObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath</code><br>移除观察者，每个注册的观察者应该都要移除掉</p>
+</li>
+</ul>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p>有两个类，Child 和 Nanny，Child 的 cleanValue 降低时会通知 Nanny，如果 cleanValue 过低，将会给 Child 洗个澡。</p>
+<p>Child 类<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Child</span> : <span class="title">NSObject</span></span></div><div class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>) <span class="built_in">NSInteger</span> cleanValue;</div><div class="line"><span class="keyword">@end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Child</span></span></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure></p>
+<p>Nanny 类<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Nanny</span> : <span class="title">NSObject</span></span></div><div class="line"></div><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) Child *child;</div><div class="line"></div><div class="line">- (<span class="keyword">instancetype</span>)initWithChild:(Child *)child;</div><div class="line"><span class="keyword">@end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Nanny</span></span></div><div class="line"></div><div class="line">- (<span class="keyword">instancetype</span>)initWithChild:(Child *)child &#123;</div><div class="line">    </div><div class="line">    <span class="keyword">self</span> = [<span class="keyword">super</span> init];</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>) &#123;</div><div class="line">        </div><div class="line">        _child = child;</div><div class="line">        <span class="comment">// 对 child 注册观察者，观察 cleanValue 的值变化</span></div><div class="line">        [_child addObserver:<span class="keyword">self</span> forKeyPath:<span class="string">@"cleanValue"</span> options:<span class="built_in">NSKeyValueObservingOptionNew</span> context:<span class="literal">nil</span>];</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;  </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 实现接受观察消息的方法</span></div><div class="line">- (<span class="keyword">void</span>) observeValueForKeyPath:(<span class="built_in">NSString</span> *)keyPath</div><div class="line">                       ofObject:(<span class="keyword">id</span>)object change:(<span class="built_in">NSDictionary</span>&lt;<span class="built_in">NSString</span> *,<span class="keyword">id</span>&gt; *)change</div><div class="line">                        context:(<span class="keyword">void</span> *)context&#123;</div><div class="line">    </div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"保姆接受到消息啦"</span>);</div><div class="line">    <span class="comment">// 如果 cleanValue 值小于等于98，洗个澡</span></div><div class="line">    <span class="keyword">if</span> ([change[<span class="string">@"new"</span>] integerValue] &lt;= <span class="number">98</span>) &#123;</div><div class="line">        </div><div class="line">        Child *child = (Child *) object;</div><div class="line">        child.cleanValue = <span class="number">100</span>;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"洗澡"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)dealloc &#123;</div><div class="line">    <span class="comment">// 移除观察者</span></div><div class="line">    [_child removeObserver:<span class="keyword">self</span> forKeyPath:<span class="string">@"cleanValue"</span>];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure></p>
+<p>main 函数<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> main(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[]) &#123;</div><div class="line">    <span class="keyword">@autoreleasepool</span> &#123;</div><div class="line">        </div><div class="line">        Child *child = [[Child alloc] init];</div><div class="line">        child.cleanValue = <span class="number">100</span>;</div><div class="line">        Nanny *nanny = [[Nanny alloc] initWithChild:child];</div><div class="line">        child.cleanValue = <span class="number">90</span>;<span class="comment">// 改变值，让观察者观察并发送消息</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>输出<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="number">2016</span><span class="number">-04</span><span class="number">-19</span> <span class="number">19</span>:<span class="number">15</span>:<span class="number">01.176</span> KVO[<span class="number">38430</span>:<span class="number">9530015</span>] 保姆接受到消息啦</div><div class="line"><span class="number">2016</span><span class="number">-04</span><span class="number">-19</span> <span class="number">19</span>:<span class="number">15</span>:<span class="number">01.177</span> KVO[<span class="number">38430</span>:<span class="number">9530015</span>] 保姆接受到消息啦</div><div class="line"><span class="number">2016</span><span class="number">-04</span><span class="number">-19</span> <span class="number">19</span>:<span class="number">15</span>:<span class="number">01.177</span> KVO[<span class="number">38430</span>:<span class="number">9530015</span>] 洗澡</div></pre></td></tr></table></figure></p>
+<p>在 Nanny 中也修改了 cleanValue 的值，所以会输出两次接收到消息了。</p>
+<p><strong>小贴士</strong><br>一定要用 setter 方法才会触发观察者，如果用_cleanValue = 100;这样子是无法触发观察者的。</p>
+<h1 id="观察者模式的优缺点"><a href="#观察者模式的优缺点" class="headerlink" title="观察者模式的优缺点"></a>观察者模式的优缺点</h1><h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
+<li><p>观察者和被观察者之间是抽象耦合<br>在拓展观察者和被观察者都是非常容易的。</p>
+</li>
+<li><p>建立了一套触发机制<br>把各个单一的类串联成真实世界的复杂的逻辑关系。</p>
+</li>
+</ul>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><p>一个被观察者，多个观察着，开发和调试会比较复杂，而且运行效率也有问题</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;KVO 是观察者设计模式。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Define a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically（定义对象间一种一对多的依赖关系，以至于但一个对象改变状态时，所有其他依赖的对象都会得到通知并被自动更新 ———— 设计模式之禅）&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Objective-C" scheme="http://yuntechs.me/categories/Objective-C/"/>
+    
+    
+      <category term="iOS" scheme="http://yuntechs.me/tags/iOS/"/>
+    
+      <category term="Objective-C" scheme="http://yuntechs.me/tags/Objective-C/"/>
+    
+      <category term="设计模式" scheme="http://yuntechs.me/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OC 中的 KVC</title>
+    <link href="http://yuntechs.me/2016/04/19/kvc%E5%92%8Ckvo/"/>
+    <id>http://yuntechs.me/2016/04/19/kvc和kvo/</id>
+    <published>2016-04-19T03:48:19.000Z</published>
+    <updated>2016-04-21T08:55:11.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>KVC 是 Key Value Coding，而 KVO 是 Key Value Observing。KVC 是 OC 中的一种机制或者说是方法，用来间接地更改对象的状态，而 KVO 是一种设计模式—-——观察者模式。</p>
+<a id="more"></a>
+<h1 id="KVC-介绍"><a href="#KVC-介绍" class="headerlink" title="KVC 介绍"></a>KVC 介绍</h1><p>OC 中有多种更改对象状态的方法，例如用 setter 和 getter，以及对实例变量进行赋值，这些是直接更改。而 KVC 是间接地对状态进行修改。</p>
+<p>-valueForKey: 发送键得到值<br>-setValue:forKey: 发送值设置键</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Person *person = [[Person alloc] init];</div><div class="line">Child *child = [[Child alloc] init];</div><div class="line">[person setValue:<span class="string">@"hh"</span> forKey:<span class="string">@"age"</span>];</div><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, [person valueForKey:<span class="string">@"age"</span>]);</div></pre></td></tr></table></figure>
+<p>输出<code>hh</code>。</p>
+<h2 id="键路径（KeyPath"><a href="#键路径（KeyPath" class="headerlink" title="键路径（KeyPath)"></a>键路径（KeyPath)</h2><p>例如 car 对象中包含一个 engine 对象,engine 对象中有一个变量 power,则可以对 car 进行 KVC:[car  valueForKeyPath: @”engine.power”]来对 engine 对象中的 power 取值.</p>
+<h2 id="访问数组"><a href="#访问数组" class="headerlink" title="访问数组"></a>访问数组</h2><p>当 KVC 访问数组时,会查询数组中的所有对象,并将所有结构以数组返回.<br>例如 car 中有 tires 数组，包含4个 tires, 则用[car valueForKeyPath: @”tires.pressure”];<br>会返回 tires 数组中所有的 pressure 值.注意不能指定数组索引来访问.</p>
+<h2 id="快速运算"><a href="#快速运算" class="headerlink" title="快速运算"></a>快速运算</h2><p>KVC 不仅能得到对象的值,也可以进行计算.例如:</p>
+<ul>
+<li>计算个数<br>[garage valueForKeyPath: @”cars.@count”];<br>cars 是 NSArray 类型,@ count 意味着通知编译器计算路径左侧值的对象总数.</li>
+<li>求和<br>[garage valueForKeyPath: @”cars.@sum.mileage”]<br>计算所有汽车的里程数.</li>
+<li>平均数<br>[garage valueForKeyPath: @”cars.@avg.mileage”]</li>
+<li>最小值<br>[garage valueForKeyPath: @”cars.@min.mileage”]</li>
+<li>最大值<br>[garage valueForKeyPath: @”cars.@max.mileage”]</li>
+<li>在集合中获取对应的不同的值(去掉重复的值)<br>[garage valueForKeyPath: @”cars.@distinctUnionOfObjects.make”]</li>
+</ul>
+<h3 id="KVC-运算的缺点"><a href="#KVC-运算的缺点" class="headerlink" title="KVC 运算的缺点"></a>KVC 运算的缺点</h3><p>KVC 需要解析字符串来计算,所以速度比较慢</p>
+<h2 id="批处理"><a href="#批处理" class="headerlink" title="批处理"></a>批处理</h2><p>KVC 中有两个方法可以进行批处理:</p>
+<ul>
+<li>-(NSDictionary<nsstring *,id=""> <em>)dictionaryWithValuesForKeys:(NSArray&lt;NSString </em>&gt; *)keys;</nsstring></li>
+<li>-(void)setValuesForKeysWithDictionary:(NSDictionary<nsstring *,id=""> *)keyedValues<br>前者传入一个 NSArray, 将对象中与数组中的 key 相对的值取出,并返回一个字典。后者则是依据传入的字典修改对象中的值。</nsstring></li>
+</ul>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> main(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[]) &#123;</div><div class="line">    </div><div class="line">    <span class="keyword">@autoreleasepool</span> &#123;</div><div class="line">        hh *h1 = [[hh alloc] init];</div><div class="line">        hh *h2 = [[hh alloc] init];</div><div class="line">        hh *h3 = [[hh alloc] init];</div><div class="line">        hh *h4 = [[hh alloc] init];</div><div class="line">        h1.a = <span class="number">10</span>;</div><div class="line">        h2.a = <span class="number">20</span>;</div><div class="line">        h3.a = <span class="number">30</span>;</div><div class="line">        h4.a = <span class="number">30</span>;</div><div class="line">        <span class="built_in">NSArray</span> *a = @[h1, h2, h3, h4];</div><div class="line">       </div><div class="line">        Person *person = [[Person alloc] init];</div><div class="line">        person.array = a;</div><div class="line">        person.age = <span class="number">10</span>;</div><div class="line">        </div><div class="line">        <span class="comment">// 路径取值</span></div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, [person valueForKeyPath:<span class="string">@"array.a"</span>]);</div><div class="line">        <span class="comment">// 数组中元素个数</span></div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, [person valueForKeyPath:<span class="string">@"array.@count"</span>]);</div><div class="line">        <span class="comment">// 和</span></div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, [person valueForKeyPath:<span class="string">@"array.@sum.a"</span>]);</div><div class="line">        <span class="comment">// 平均数</span></div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, [person valueForKeyPath:<span class="string">@"array.@avg.a"</span>]);</div><div class="line">        <span class="comment">// 最小值</span></div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, [person valueForKeyPath:<span class="string">@"array.@min.a"</span>]);</div><div class="line">        <span class="comment">// 最大值</span></div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, [person valueForKeyPath:<span class="string">@"array.@max.a"</span>]);</div><div class="line">        <span class="comment">// 去除重复的值 </span></div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, [person valueForKeyPath:<span class="string">@"array.@distinctUnionOfObjects.a"</span>]);</div><div class="line">        <span class="comment">// 将所有值取出</span></div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, [person valueForKeyPath:<span class="string">@"array.@unionOfObjects.a"</span>]);</div><div class="line">     </div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>输出<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="number">2016</span><span class="number">-04</span><span class="number">-19</span> <span class="number">16</span>:<span class="number">57</span>:<span class="number">38.027</span> kvo[<span class="number">10550</span>:<span class="number">9390785</span>] (</div><div class="line">    <span class="number">10</span>,</div><div class="line">    <span class="number">20</span>,</div><div class="line">    <span class="number">30</span>,</div><div class="line">    <span class="number">30</span></div><div class="line">)</div><div class="line"><span class="number">2016</span><span class="number">-04</span><span class="number">-19</span> <span class="number">16</span>:<span class="number">57</span>:<span class="number">38.028</span> kvo[<span class="number">10550</span>:<span class="number">9390785</span>] <span class="number">4</span></div><div class="line"><span class="number">2016</span><span class="number">-04</span><span class="number">-19</span> <span class="number">16</span>:<span class="number">57</span>:<span class="number">38.028</span> kvo[<span class="number">10550</span>:<span class="number">9390785</span>] <span class="number">90</span></div><div class="line"><span class="number">2016</span><span class="number">-04</span><span class="number">-19</span> <span class="number">16</span>:<span class="number">57</span>:<span class="number">38.028</span> kvo[<span class="number">10550</span>:<span class="number">9390785</span>] <span class="number">22.5</span></div><div class="line"><span class="number">2016</span><span class="number">-04</span><span class="number">-19</span> <span class="number">16</span>:<span class="number">57</span>:<span class="number">38.028</span> kvo[<span class="number">10550</span>:<span class="number">9390785</span>] <span class="number">10</span></div><div class="line"><span class="number">2016</span><span class="number">-04</span><span class="number">-19</span> <span class="number">16</span>:<span class="number">57</span>:<span class="number">38.028</span> kvo[<span class="number">10550</span>:<span class="number">9390785</span>] <span class="number">30</span></div><div class="line"><span class="number">2016</span><span class="number">-04</span><span class="number">-19</span> <span class="number">16</span>:<span class="number">57</span>:<span class="number">38.029</span> kvo[<span class="number">10550</span>:<span class="number">9390785</span>] (</div><div class="line">    <span class="number">10</span>,</div><div class="line">    <span class="number">20</span>,</div><div class="line">    <span class="number">30</span></div><div class="line">)</div><div class="line"><span class="number">2016</span><span class="number">-04</span><span class="number">-19</span> <span class="number">16</span>:<span class="number">57</span>:<span class="number">38.029</span> kvo[<span class="number">10550</span>:<span class="number">9390785</span>] (</div><div class="line">    <span class="number">10</span>,</div><div class="line">    <span class="number">20</span>,</div><div class="line">    <span class="number">30</span>,</div><div class="line">    <span class="number">30</span></div><div class="line">)</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;KVC 是 Key Value Coding，而 KVO 是 Key Value Observing。KVC 是 OC 中的一种机制或者说是方法，用来间接地更改对象的状态，而 KVO 是一种设计模式—-——观察者模式。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Objective-C" scheme="http://yuntechs.me/categories/Objective-C/"/>
+    
+    
+      <category term="iOS" scheme="http://yuntechs.me/tags/iOS/"/>
+    
+      <category term="Objective-C" scheme="http://yuntechs.me/tags/Objective-C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>autorelease 的实现</title>
+    <link href="http://yuntechs.me/2016/04/15/autorelease%E7%9A%84%E5%AE%9E%E7%8E%B0/"/>
+    <id>http://yuntechs.me/2016/04/15/autorelease的实现/</id>
+    <published>2016-04-15T11:05:22.000Z</published>
+    <updated>2016-07-25T04:59:13.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>这是阅读《Objective-C 高级编程》的第二篇笔记，主要了解了内存管理中 autorelease 的实现。</p>
+<a id="more"></a>
+<h1 id="GNUstep-的实现"><a href="#GNUstep-的实现" class="headerlink" title="GNUstep 的实现"></a>GNUstep 的实现</h1><h2 id="方法调用"><a href="#方法调用" class="headerlink" title="方法调用"></a>方法调用</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">- (id) autorelease&#123;</div><div class="line"></div><div class="line">    [NSAutoreleasePool addObject: self]; <span class="comment">// 调用 NSAutorelease 的类方法 addObject</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="NSAutoreleasePool-类实现"><a href="#NSAutoreleasePool-类实现" class="headerlink" title="NSAutoreleasePool 类实现"></a>NSAutoreleasePool 类实现</h2><p>autorelease 方法调用了 NSAutoreleasePool 的 addObject 实例方法，下面是 addObject 实例方法的实现：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>) addObject: (id) anObj&#123;</div><div class="line"></div><div class="line">    [<span class="built_in">array</span> addObject: anObj]; <span class="comment">// 将接收到的对象追加到 NSAutoreleasePool 对象的可变数组中</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当 NSAutoreleasePool 被 drain 或者释放了后的代码实现：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>) drain&#123;</div><div class="line">    [self dealloc];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>) dealloc&#123;</div><div class="line">    [self emptyPool];</div><div class="line">    [<span class="built_in">array</span> release]; <span class="comment">// 释放数组</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>) emptyPool&#123;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (id obj in <span class="built_in">array</span>)&#123;</div><div class="line">        [obj reelase];  <span class="comment">// 逐一释放对象</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="GNUstep-实现总结"><a href="#GNUstep-实现总结" class="headerlink" title="GNUstep 实现总结"></a>GNUstep 实现总结</h2><ul>
+<li>向自动释放池中添加对象<br>对象调用 autorelease 方法，autorelease 方法调用实例方法 addObject 将这个对象添加进 NSAutoreleasePool 对象维护的数组里。</li>
+<li>自动释放对象<br>当自动释放池将被销毁时，会调用 dealloc 方法，其中调用 emptyPool 将释放池数组中的对象逐一释放，最后释放可变数组</li>
+</ul>
+<h1 id="Apple-的实现"><a href="#Apple-的实现" class="headerlink" title="Apple 的实现"></a>Apple 的实现</h1><h2 id="autorelease-实现"><a href="#autorelease-实现" class="headerlink" title="autorelease 实现"></a>autorelease 实现</h2><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">class AutoreleasePoolPage&#123;</div><div class="line">    static inline void *push()&#123;</div><div class="line">        相当于生成或持有 NSAutoreleasePool 类对象</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    static inline void *pop(void *token)&#123;</div><div class="line">        相当于废弃 NSAutoreleasePool 类对象</div><div class="line">        releaseAll();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    static inline id autorelease(id obj)&#123;</div><div class="line">        相当于 NSAutoreleasePool 中的 addObject 类方法</div><div class="line">        AutoreleasePoolPage *autoreleasePoolPage = 取得正在使用的 AutoreleasePoolPage 实例;</div><div class="line">        autoreleasePoolPage-&gt;add(obj);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    id *add(id obj)&#123;</div><div class="line">        将对象加入数组中</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    void releaseAll()//调用数组中对象的 release 方法</div><div class="line">&#125;;</div><div class="line"></div><div class="line">void *objc_autoreleasePoolPush(void);  //调用 push 方法</div><div class="line">void objc_autoreleasePoolPop(void *ctxt); // 调用 pop</div><div class="line">void *objc_autorelease(id obj); // 调用 autorelease</div></pre></td></tr></table></figure>
+<p>从书中可以知道，autorelease 的作用流程是：</p>
+<ol>
+<li>创建 NSAutoreleasePool 对象</li>
+<li>使 AutoreleasePoolPage 持有 NSAutoreleasePool 对象</li>
+<li>将需要 autorelease 的对象加入 AutoreleasePoolPage 的数组中</li>
+<li>在 NSAutoreleasePool 销毁的时候释放 page 中的所有对象</li>
+</ol>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p>OC 的代码如下：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</div><div class="line">    @autoreleasepool &#123;</div><div class="line">        </div><div class="line">        NSObject *obj = [[NSObject alloc] init];</div><div class="line">        [obj autorelease];</div><div class="line">        NSMutableArray *hh = [[NSMutableArray alloc] init];</div><div class="line">        [hh autorelease];</div><div class="line">        _objc_autoreleasePoolPrint(); <span class="comment">// 非公开的调试方法，用来打印 AutoreleasePoolPage 状态</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>运行打印出来：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">objc[<span class="number">7179</span>]: #############<span class="meta">#</span></div><div class="line">objc[7179]: AUTORELEASE POOLS for thread 0x10007f000</div><div class="line">objc[<span class="number">7179</span>]: <span class="number">3</span> releases pending.</div><div class="line">objc[<span class="number">7179</span>]: [<span class="number">0x100806000</span>]  ................  PAGE  (hot) (cold)</div><div class="line">objc[<span class="number">7179</span>]: [<span class="number">0x100806038</span>]  ################  POOL <span class="number">0x100806038</span></div><div class="line">objc[<span class="number">7179</span>]: [<span class="number">0x100806040</span>]       <span class="number">0x1001036c0</span>  NSObject</div><div class="line">objc[<span class="number">7179</span>]: [<span class="number">0x100806048</span>]       <span class="number">0x100107190</span>  __NSArrayM</div><div class="line">objc[<span class="number">7179</span>]: ##############</div></pre></td></tr></table></figure></p>
+<p>可以看到先把 POOL 压入 page，然后加入 NSObject 和 NSMutableArray 对象，从内存地址中可以看到应该是一个栈结构。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>简单地说，系统维护着一个栈，会将 NSAutoreleasePool 和调用 autorelease 方法的对象压入栈中，在销毁的时候，依照先入后出的原则依次释放对象。</p>
+<h1 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h1><p>如果 autorelease NSAutoreleasePool 对象会崩溃，因为 NSAutoreleasePool 的 autorelease 被重写了。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这是阅读《Objective-C 高级编程》的第二篇笔记，主要了解了内存管理中 autorelease 的实现。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Objective-C" scheme="http://yuntechs.me/categories/Objective-C/"/>
+    
+    
+      <category term="iOS" scheme="http://yuntechs.me/tags/iOS/"/>
+    
+      <category term="Objective-C" scheme="http://yuntechs.me/tags/Objective-C/"/>
+    
+      <category term="OC内存管理" scheme="http://yuntechs.me/tags/OC%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/"/>
+    
+      <category term="读书笔记" scheme="http://yuntechs.me/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>alloc/retain/release/dealloc 实现</title>
+    <link href="http://yuntechs.me/2016/04/14/OC%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E7%AC%94%E8%AE%B01/"/>
+    <id>http://yuntechs.me/2016/04/14/OC内存管理笔记1/</id>
+    <published>2016-04-14T08:14:44.000Z</published>
+    <updated>2016-04-21T11:32:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天阅读《Objective-C 高级编程》，做下笔记，内容都是书里面整理出来的，作为初学者暂时还无法有自己的拓展和思考。</p>
+<a id="more"></a>
+<h1 id="NSZone"><a href="#NSZone" class="headerlink" title="NSZone"></a>NSZone</h1><p> NSZone（是一个结构体）使用 NSZone 结构是为了防止内存碎片化，但是后来被弃用了，因为系统对内存的管理已经非常高效，使用 NSZone 反而会降低效率。</p>
+<h1 id="GNUstep-中的实现"><a href="#GNUstep-中的实现" class="headerlink" title="GNUstep 中的实现"></a>GNUstep 中的实现</h1><h2 id="alloc-实现"><a href="#alloc-实现" class="headerlink" title="alloc 实现"></a>alloc 实现</h2><h3 id="用-NSZone-的实现"><a href="#用-NSZone-的实现" class="headerlink" title="用 NSZone 的实现"></a>用 NSZone 的实现</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">+ (<span class="keyword">id</span>) alloc&#123;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> [<span class="keyword">self</span> allocWithZone: <span class="built_in">NSDefaultMallocZone</span>()];<span class="comment">// NSDefaultMallocZone 返回默认的 zone</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">+ (<span class="keyword">id</span>) allocWithZone: (<span class="built_in">NSZone</span> *) z&#123;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="built_in">NSAllocateObject</span>(<span class="keyword">self</span>, <span class="number">0</span>, z);</div><div class="line">&#125;   </div><div class="line"></div><div class="line"><span class="keyword">struct</span> obj_layout&#123;</div><div class="line"></div><div class="line">    <span class="built_in">NSUInteger</span> retained;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">inline</span> <span class="keyword">id</span> <span class="built_in">NSAllocateObject</span>(Class aClass, <span class="built_in">NSUInteger</span> extraBytes, <span class="built_in">NSZone</span> *zone)&#123;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> size = 对象所需内存大小;</div><div class="line">    <span class="keyword">id</span> new = <span class="built_in">NSZoneMalloc</span>(zone, size);</div><div class="line">    memset(new, <span class="number">0</span>, size);</div><div class="line">    new = (<span class="keyword">id</span>) &amp; ((<span class="keyword">struct</span> obj_layout *)new)[<span class="number">1</span>];<span class="comment">// 将 new 强制转换为 obj_layout 指针，并用下标（我觉得不用下标好点）获得 retained 后面第一个地址中的值，然后用 &amp; 获得这个值的地址，将其强制转换为 id 类型指针，最后将这个地址赋给 new</span></div><div class="line">    <span class="keyword">return</span> new;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>alloc 调用了 allocWithZone:,在 allocWithZone:中又调用了 NSAllocateObject 来分配内存给对象。</p>
+<h3 id="不用-NSZone-实现"><a href="#不用-NSZone-实现" class="headerlink" title="不用 NSZone 实现"></a>不用 NSZone 实现</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> obj_layout&#123;</div><div class="line">    <span class="built_in">NSUInteger</span> retained;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">+ (<span class="keyword">id</span>) alloc&#123;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> size = <span class="keyword">sizeof</span>(<span class="keyword">struct</span> obj_layout) + 对象大小; <span class="comment">// 计算需要多少内存空间</span></div><div class="line">    <span class="keyword">struct</span> obj_layout *p = (<span class="keyword">struct</span> obj_layout *) calloc(<span class="number">1</span>, size); <span class="comment">// 使用 calloc 分配1个 size 大小的内存空间</span></div><div class="line">    <span class="keyword">return</span> (<span class="keyword">id</span>)(p+<span class="number">1</span>); <span class="comment">// 机智地+1s（误）使指针指向对象的首地址，并且强制类型转换为 id</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="retainCount"><a href="#retainCount" class="headerlink" title="retainCount"></a>retainCount</h2><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">NSUInteger</span>) retainCount&#123;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="built_in">NSExtraRefCount</span>(<span class="keyword">self</span>) + <span class="number">1</span>; <span class="comment">// 调用 NSExtraRefCount 加1后返回</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">inline</span> <span class="built_in">NSUInteger</span></div><div class="line"><span class="built_in">NSExtraRefCount</span>(<span class="keyword">id</span> anObject)&#123;</div><div class="line"></div><div class="line"><span class="keyword">return</span> ((<span class="keyword">struct</span> obj_layout *) anObject)[<span class="number">-1</span>].retained;<span class="comment">// 将接收到的指针指向 obj_layout 首地址，并从中取 retained 的值</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="retain"><a href="#retain" class="headerlink" title="retain"></a>retain</h2><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">id</span>) <span class="keyword">retain</span>&#123;</div><div class="line">    <span class="built_in">NSIncrementExtraRefCount</span>(<span class="keyword">self</span>);</div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">inline</span> <span class="keyword">void</span></div><div class="line"><span class="built_in">NSIncrementExtraRefCount</span>(<span class="keyword">id</span> anObject)&#123;</div><div class="line"></div><div class="line"><span class="comment">// 先进行边界检查,检查 retained 是否会溢出，如果溢出抛出错误</span></div><div class="line">    <span class="keyword">if</span>(((<span class="keyword">struct</span> obj_layout *)anObject)[<span class="number">-1</span>].retained == <span class="built_in">UINT_MAX</span> - <span class="number">1</span>))&#123;</div><div class="line">        [<span class="built_in">NSException</span> raise: <span class="built_in">NSInternalInconsistencyException</span> format: <span class="string">@"NSIncrementExtraRefCount() asked to increment too far"</span>);</div><div class="line"></div><div class="line"><span class="comment">// 使 retained 加1    </span></div><div class="line">        ((<span class="keyword">struct</span> obj_layout *) anObject)[<span class="number">-1</span>].retained++;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="release"><a href="#release" class="headerlink" title="release"></a>release</h2><p>很简单地可以推出 release 实现</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>) <span class="keyword">retain</span>&#123;</div><div class="line">    <span class="comment">// 调用 NSDecrementExtraRefCountWasZero 方法，如果返回 YES，则调用 dealloc 方法，销毁对象</span></div><div class="line">    <span class="keyword">if</span>(<span class="built_in">NSDecrementExtraRefCountWasZero</span>(<span class="keyword">self</span>))</div><div class="line">        [<span class="keyword">self</span> dealloc];</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">BOOL</span> <span class="built_in">NSDecrementExtraRefCountWasZero</span> (<span class="keyword">id</span> anObject)&#123;</div><div class="line"><span class="comment">// 如果 retained 是为0，则返回 YES</span></div><div class="line">    <span class="keyword">if</span>(((<span class="keyword">struct</span> obj_layout *) anObject[<span class="number">-1</span>].retained == <span class="number">0</span>)&#123;</div><div class="line">    </div><div class="line">            <span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">        &#125; <span class="keyword">else</span>&#123;</div><div class="line"><span class="comment">// 否则使 retained 减1，返回 NO        </span></div><div class="line">            ((<span class="keyword">struct</span> obj_layout *) anObject)[<span class="number">-1</span>].retained--;</div><div class="line">            <span class="keyword">return</span> <span class="literal">NO</span>;</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>之前有写过引用计数器的博客，里面对 retainCount 为什么不会为0做了个猜想，这里就有一个很好的解释了。之前的博客<a href="/2016/04/13/Objective-C中的引用计数器/#u731C_u60F3">地址</a></p>
+<h2 id="dealloc"><a href="#dealloc" class="headerlink" title="dealloc"></a>dealloc</h2><p>这个差不多就不注释了<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>) dealloc&#123;</div><div class="line">    <span class="built_in">NSDeallocateObject</span>(<span class="keyword">self</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">inline</span> <span class="keyword">void</span></div><div class="line"><span class="built_in">NSDeallocateObject</span>(<span class="keyword">id</span> anObject)&#123;</div><div class="line"></div><div class="line">    <span class="keyword">struct</span> obj_layout *o = &amp;((<span class="keyword">struct</span> obj_layout *) anObject)[<span class="number">-1</span>];</div><div class="line">    free(o)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="苹果的实现的猜测"><a href="#苹果的实现的猜测" class="headerlink" title="苹果的实现的猜测"></a>苹果的实现的猜测</h1><h2 id="alloc"><a href="#alloc" class="headerlink" title="alloc"></a>alloc</h2><p>苹果的 alloc 实现中调用了以下方法：</p>
+<ul>
+<li>+alloc</li>
+<li>+allocWithZone:</li>
+<li>class_createInstance</li>
+<li>calloc</li>
+</ul>
+<p>过程：首先 alloc 调用 allocWithZone: 方法，然后调用 class_createInstance 函数，最后通过 calloc 来分配内存块。这个顺序和 GNUstep 的实现相似.</p>
+<h2 id="retainCount、retain-和-release-的实现"><a href="#retainCount、retain-和-release-的实现" class="headerlink" title="retainCount、retain 和 release 的实现"></a>retainCount、retain 和 release 的实现</h2><h3 id="retainCount-1"><a href="#retainCount-1" class="headerlink" title="retainCount"></a>retainCount</h3><p>调用了：</p>
+<ul>
+<li>-retianCount</li>
+<li>__CFDoExternRefOperation</li>
+<li>CFBasicHashGetCountOfKey</li>
+</ul>
+<h3 id="retain-1"><a href="#retain-1" class="headerlink" title="retain"></a>retain</h3><p>调用了：</p>
+<ul>
+<li>-retain</li>
+<li>__CFDoExternRefOperation</li>
+<li>CFBasicHashAddValue</li>
+</ul>
+<h3 id="release-1"><a href="#release-1" class="headerlink" title="release"></a>release</h3><p>调用了：</p>
+<ul>
+<li>release</li>
+<li>__CFDoExternRefOperation</li>
+<li>CFBasicHashRemoveValue</li>
+</ul>
+<h3 id="CFDoExternRefOperation"><a href="#CFDoExternRefOperation" class="headerlink" title="__CFDoExternRefOperation"></a>__CFDoExternRefOperation</h3><p>上面每一个方法都调用了<strong>CFDoExternRefOperation方法，CF 开头是指 Core Foundation 框架，下面是</strong>CFDoExternRefOperation方法的简化后代码:<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> __CFDoExternRefOperation(uintptr_t op, <span class="keyword">id</span> obj)&#123;</div><div class="line">    <span class="built_in">CFBasicHashRef</span> table = 取得对象对应的散列表</div><div class="line">    <span class="keyword">int</span> count;</div><div class="line">    <span class="keyword">switch</span>(op)&#123;</div><div class="line">        <span class="keyword">case</span> OPERATION_retainCount: <span class="comment">// 如果是retainCount，则运行这个</span></div><div class="line">            count = <span class="built_in">CFBasicHashGetCountOfKey</span>(table, obj);  <span class="comment">// 从 hash 表中按照 key 获得值，这个值是 retainCount</span></div><div class="line">            <span class="keyword">return</span> count;</div><div class="line">        </div><div class="line">        <span class="keyword">case</span> OPERATION_retain:  <span class="comment">// 如果是retain，则运行这个</span></div><div class="line">            <span class="built_in">CFBasicHashAddValue</span>(table, obj);  <span class="comment">// 向 hash 表中添加 key，并设为0（也许吧）</span></div><div class="line">            <span class="keyword">return</span> obj;</div><div class="line">        </div><div class="line">        <span class="keyword">case</span> OPERATION_release: <span class="comment">// 如果是release，则运行这个</span></div><div class="line">            count = <span class="built_in">CFBasicHashRemoveValue</span>(table, obj);<span class="comment">// 从 hash 表中释放</span></div><div class="line">            <span class="keyword">return</span> <span class="number">0</span> == count;</div><div class="line">            &#125;</div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
+<h3 id="使用引用计数表和使用内存块头部管理引用计数的对比"><a href="#使用引用计数表和使用内存块头部管理引用计数的对比" class="headerlink" title="使用引用计数表和使用内存块头部管理引用计数的对比"></a>使用引用计数表和使用内存块头部管理引用计数的对比</h3><ul>
+<li>使用内存块头部</li>
+</ul>
+<ol>
+<li>代码少</li>
+<li>能够统一管理引用计数用内存块与对象用内存块</li>
+</ol>
+<ul>
+<li>使用引用计数表</li>
+</ul>
+<ol>
+<li>对象用内存块无需考虑内存块头部</li>
+<li>引用计数表各记录中存有内存块地址，可从各个记录中追溯到各对象的内存块（这一条对 debug 的时候非常重要）</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天阅读《Objective-C 高级编程》，做下笔记，内容都是书里面整理出来的，作为初学者暂时还无法有自己的拓展和思考。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Objective-C" scheme="http://yuntechs.me/categories/Objective-C/"/>
+    
+    
+      <category term="iOS" scheme="http://yuntechs.me/tags/iOS/"/>
+    
+      <category term="Objective-C" scheme="http://yuntechs.me/tags/Objective-C/"/>
+    
+      <category term="OC内存管理" scheme="http://yuntechs.me/tags/OC%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/"/>
+    
+      <category term="读书笔记" scheme="http://yuntechs.me/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
